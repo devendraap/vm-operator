@@ -108,7 +108,7 @@ The following SecurityContext will be applied:
 Also `SecurityContext` can be configured with spec setting. It may be useful for mounted volumes, with `VMSingle` for example:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: vmsingle-f

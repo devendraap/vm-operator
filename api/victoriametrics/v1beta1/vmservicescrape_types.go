@@ -213,7 +213,7 @@ type VMScrapeParams struct {
 	// +optional
 	ScrapeOffset *string `json:"scrape_offset,omitempty"`
 	// ProxyClientConfig configures proxy auth settings for scraping
-	// See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+	// See feature description https://docs.acceldata.io/vmagent.html#scraping-targets-via-a-proxy
 	// +optional
 	ProxyClientConfig *ProxyAuth `json:"proxy_client_config,omitempty"`
 	// Headers allows sending custom headers to scrape targets

@@ -705,7 +705,7 @@ VMAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.
 | tmpDataPath | Path to directory where temporary data for remote write component is stored (default vmagent-remotewrite-data) | *string | false |
 | flushInterval | Interval for flushing the data to remote storage. (default 1s) | *string | false |
 | label | Labels in the form &#39;name=value&#39; to add to all the metrics before sending them. This overrides the label if it already exists. | map[string]string | false |
-| useMultiTenantMode | Configures vmagent in multi-tenant mode with direct cluster support docs https://docs.victoriametrics.com/vmagent.html#multitenancy it&#39;s global setting and affects all remote storage configurations | bool | false |
+| useMultiTenantMode | Configures vmagent in multi-tenant mode with direct cluster support docs https://docs.acceldata.io/vmagent.html#multitenancy it&#39;s global setting and affects all remote storage configurations | bool | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -794,7 +794,7 @@ VMAgentSpec defines the desired state of VMAgent
 | extraEnvs | ExtraEnvs that will be added to VMAgent pod | [][v1.EnvVar](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#envvar-v1-core) | false |
 | serviceSpec | ServiceSpec that will be added to vmagent service spec | *[AdditionalServiceSpec](#additionalservicespec) | false |
 | serviceScrapeSpec | ServiceScrapeSpec that will be added to vmagent VMServiceScrape spec | *[VMServiceScrapeSpec](#vmservicescrapespec) | false |
-| shardCount | ShardCount - numbers of shards of VMAgent in this case operator will use 1 deployment/sts per shard with replicas count according to spec.replicas, see https://docs.victoriametrics.com/vmagent.html#scraping-big-number-of-targets | *int | false |
+| shardCount | ShardCount - numbers of shards of VMAgent in this case operator will use 1 deployment/sts per shard with replicas count according to spec.replicas, see https://docs.acceldata.io/vmagent.html#scraping-big-number-of-targets | *int | false |
 | updateStrategy | UpdateStrategy - overrides default update strategy. works only for deployments, statefulset always use OnDelete. | *[appsv1.DeploymentStrategyType](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#deploymentstrategy-v1-apps) | false |
 | rollingUpdate | RollingUpdate - overrides deployment update params. | *[appsv1.RollingUpdateDeployment](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#rollingupdatedeployment-v1-apps) | false |
 | podDisruptionBudget | PodDisruptionBudget created by operator | *[EmbeddedPodDisruptionBudgetSpec](#embeddedpoddisruptionbudgetspec) | false |
@@ -817,7 +817,7 @@ VMAgentSpec defines the desired state of VMAgent
 | readinessGates | ReadinessGates defines pod readiness gates | []v1.PodReadinessGate | false |
 | claimTemplates | ClaimTemplates allows adding additional VolumeClaimTemplates for VMAgent in StatefulMode | [][v1.PersistentVolumeClaim](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#persistentvolumeclaim-v1-core) | false |
 | useStrictSecurity | UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions | *bool | false |
-| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.victoriametrics.com/enterprise.html | *[License](#license) | false |
+| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.acceldata.io/enterprise.html | *[License](#license) | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -980,11 +980,11 @@ KeyValue defines a (key, value) tuple.
 
 ## License
 
-License holds license key for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0 See: https://docs.victoriametrics.com/enterprise.html
+License holds license key for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0 See: https://docs.acceldata.io/enterprise.html
 
 | Field | Description | Scheme | Required |
 | ----- | ----------- | ------ | -------- |
-| key | Enterprise license key. This flag is available only in VictoriaMetrics enterprise. Documentation - https://docs.victoriametrics.com/enterprise.html for more information, visit https://victoriametrics.com/products/enterprise/ . To request a trial license, go to https://victoriametrics.com/products/enterprise/trial/ | *string | false |
+| key | Enterprise license key. This flag is available only in VictoriaMetrics enterprise. Documentation - https://docs.acceldata.io/enterprise.html for more information, visit https://acceldata.io/products/enterprise/ . To request a trial license, go to https://acceldata.io/products/enterprise/trial/ | *string | false |
 | keyRef | KeyRef is reference to secret with license key for enterprise features. | *[v1.SecretKeySelector](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#secretkeyselector-v1-core) | false |
 
 [Back to TOC](#table-of-contents)
@@ -1185,7 +1185,7 @@ VMAlertSpec defines the desired state of VMAlert
 | dnsConfig | Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. | *v1.PodDNSConfig | false |
 | readinessGates | ReadinessGates defines pod readiness gates | []v1.PodReadinessGate | false |
 | useStrictSecurity | UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions | *bool | false |
-| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.victoriametrics.com/enterprise.html | *[License](#license) | false |
+| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.acceldata.io/enterprise.html | *[License](#license) | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -1264,9 +1264,9 @@ VMSingleSpec defines the desired state of VMSingle
 | insertPorts | InsertPorts - additional listen ports for data ingestion. | *[InsertPorts](#insertports) | false |
 | port | Port listen port | string | false |
 | removePvcAfterDelete | RemovePvcAfterDelete - if true, controller adds ownership to pvc and after VMSingle objest deletion - pvc will be garbage collected by controller manager | bool | false |
-| retentionPeriod | RetentionPeriod for the stored metrics Note VictoriaMetrics has data/ and indexdb/ folders metrics from data/ removed eventually as soon as partition leaves retention period reverse index data at indexdb rotates once at the half of configured retention period https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#retention | string | true |
+| retentionPeriod | RetentionPeriod for the stored metrics Note VictoriaMetrics has data/ and indexdb/ folders metrics from data/ removed eventually as soon as partition leaves retention period reverse index data at indexdb rotates once at the half of configured retention period https://docs.acceldata.io/Single-server-VictoriaMetrics.html#retention | string | true |
 | vmBackup | VMBackup configuration for backup | *[VMBackup](#vmbackup) | false |
-| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.victoriametrics.com/enterprise.html | *[License](#license) | false |
+| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.acceldata.io/enterprise.html | *[License](#license) | false |
 | extraArgs | ExtraArgs that will be passed to  VMSingle pod for example remoteWrite.tmpDataPath: /tmp | map[string]string | false |
 | extraEnvs | ExtraEnvs that will be added to VMSingle pod | [][v1.EnvVar](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#envvar-v1-core) | false |
 | serviceSpec | ServiceSpec that will be added to vmsingle service spec | *[AdditionalServiceSpec](#additionalservicespec) | false |
@@ -1327,8 +1327,8 @@ RuleGroup is a list of sequentially evaluated recording and alerting rules.
 | limit | Limit the number of alerts an alerting rule and series a recording rule can produce | int | false |
 | concurrency | Concurrency defines how many rules execute at once. | int | false |
 | labels | Labels optional list of labels added to every rule within a group. It has priority over the external labels. Labels are commonly used for adding environment or tenant-specific tag. | map[string]string | false |
-| extra_filter_labels | ExtraFilterLabels optional list of label filters applied to every rule&#39;s request withing a group. Is compatible only with VM datasource. See more details at https://docs.victoriametrics.com#prometheus-querying-api-enhancements Deprecated, use params instead | map[string]string | false |
-| tenant | Tenant id for group, can be used only with enterprise version of vmalert See more details at https://docs.victoriametrics.com/vmalert.html#multitenancy | string | false |
+| extra_filter_labels | ExtraFilterLabels optional list of label filters applied to every rule&#39;s request withing a group. Is compatible only with VM datasource. See more details at https://docs.acceldata.io#prometheus-querying-api-enhancements Deprecated, use params instead | map[string]string | false |
+| tenant | Tenant id for group, can be used only with enterprise version of vmalert See more details at https://docs.acceldata.io/vmalert.html#multitenancy | string | false |
 | params | Params optional HTTP URL parameters added to each rule request | url.Values | false |
 | type | Type defines datasource type for enterprise version of vmalert possible values - prometheus,graphite | string | false |
 | headers | Headers contains optional HTTP headers added to each rule request Must be in form `header-name: value` For example:\n headers:\n   - \&#34;CustomHeader: foo\&#34;\n   - \&#34;CustomHeader2: bar\&#34; | []string | false |
@@ -1540,7 +1540,7 @@ VMScrapeParams defines scrape target configuration that compatible only with Vic
 | stream_parse |  | *bool | false |
 | scrape_align_interval |  | *string | false |
 | scrape_offset |  | *string | false |
-| proxy_client_config | ProxyClientConfig configures proxy auth settings for scraping See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy | *[ProxyAuth](#proxyauth) | false |
+| proxy_client_config | ProxyClientConfig configures proxy auth settings for scraping See feature description https://docs.acceldata.io/vmagent.html#scraping-targets-via-a-proxy | *[ProxyAuth](#proxyauth) | false |
 | headers | Headers allows sending custom headers to scrape targets must be in of semicolon separated header with it&#39;s value eg: headerName: headerValue vmagent supports since 1.79.0 version | []string | false |
 
 [Back to TOC](#table-of-contents)
@@ -1697,7 +1697,7 @@ Image defines docker image settings
 
 | Field | Description | Scheme | Required |
 | ----- | ----------- | ------ | -------- |
-| acceptEULA | AcceptEULA accepts enterprise feature usage, must be set to true. otherwise backupmanager cannot be added to single/cluster version. https://victoriametrics.com/legal/esa/ | bool | true |
+| acceptEULA | AcceptEULA accepts enterprise feature usage, must be set to true. otherwise backupmanager cannot be added to single/cluster version. https://acceldata.io/legal/esa/ | bool | true |
 | snapshotCreateURL | SnapshotCreateURL overwrites url for snapshot create | string | false |
 | snapshotDeleteURL | SnapShotDeleteURL overwrites url for snapshot delete | string | false |
 | concurrency | Defines number of concurrent workers. Higher concurrency may reduce backup duration (default 10) | *int32 | false |
@@ -1717,7 +1717,7 @@ Image defines docker image settings
 | extraArgs | extra args like maxBytesPerSecond default 0 | map[string]string | false |
 | extraEnvs |  | [][v1.EnvVar](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#envvar-v1-core) | false |
 | volumeMounts | VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition. VolumeMounts specified will be appended to other VolumeMounts in the vmbackupmanager container, that are generated as a result of StorageSpec objects. | [][v1.VolumeMount](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#volumemount-v1-core) | false |
-| restore | Restore Allows to enable restore options for pod Read more: https://docs.victoriametrics.com/vmbackupmanager.html#restore-commands | *[VMRestore](#vmrestore) | false |
+| restore | Restore Allows to enable restore options for pod Read more: https://docs.acceldata.io/vmbackupmanager.html#restore-commands | *[VMRestore](#vmrestore) | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -1750,13 +1750,13 @@ VMClusterSpec defines the desired state of VMCluster
 
 | Field | Description | Scheme | Required |
 | ----- | ----------- | ------ | -------- |
-| retentionPeriod | RetentionPeriod for the stored metrics Note VictoriaMetrics has data/ and indexdb/ folders metrics from data/ removed eventually as soon as partition leaves retention period reverse index data at indexdb rotates once at the half of configured retention period https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#retention | string | true |
+| retentionPeriod | RetentionPeriod for the stored metrics Note VictoriaMetrics has data/ and indexdb/ folders metrics from data/ removed eventually as soon as partition leaves retention period reverse index data at indexdb rotates once at the half of configured retention period https://docs.acceldata.io/Single-server-VictoriaMetrics.html#retention | string | true |
 | replicationFactor | ReplicationFactor defines how many copies of data make among distinct storage nodes | *int32 | false |
 | podSecurityPolicyName | PodSecurityPolicyName - defines name for podSecurityPolicy in case of empty value, prefixedName will be used. | string | false |
 | serviceAccountName | ServiceAccountName is the name of the ServiceAccount to use to run the VMSelect, VMStorage and VMInsert Pods. | string | false |
 | clusterVersion | ClusterVersion defines default images tag for all components. it can be overwritten with component specific image.tag value. | string | false |
 | imagePullSecrets | ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod | [][v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#localobjectreference-v1-core) | false |
-| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.victoriametrics.com/enterprise.html | *[License](#license) | false |
+| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.acceldata.io/enterprise.html | *[License](#license) | false |
 | vmselect |  | *[VMSelect](#vmselect) | false |
 | vminsert |  | *[VMInsert](#vminsert) | false |
 | vmstorage |  | *[VMStorage](#vmstorage) | false |
@@ -1809,7 +1809,7 @@ VMClusterStatus defines the observed state of VMCluster
 | extraArgs |  | map[string]string | false |
 | insertPorts | InsertPorts - additional listen ports for data ingestion. | *[InsertPorts](#insertports) | false |
 | port | Port listen port | string | false |
-| clusterNativeListenPort | ClusterNativePort for multi-level cluster setup. More details: https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#multi-level-cluster-setup | string | false |
+| clusterNativeListenPort | ClusterNativePort for multi-level cluster setup. More details: https://docs.acceldata.io/Cluster-VictoriaMetrics.html#multi-level-cluster-setup | string | false |
 | schedulerName | SchedulerName - defines kubernetes scheduler name | string | false |
 | runtimeClassName | RuntimeClassName - defines runtime class for kubernetes pod. https://kubernetes.io/docs/concepts/containers/runtime-class/ | *string | false |
 | extraEnvs | ExtraEnvs that will be added to VMSelect pod | [][v1.EnvVar](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#envvar-v1-core) | false |
@@ -1883,7 +1883,7 @@ VMClusterStatus defines the observed state of VMCluster
 | extraEnvs | ExtraEnvs that will be added to VMSelect pod | [][v1.EnvVar](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#envvar-v1-core) | false |
 | extraArgs |  | map[string]string | false |
 | port | Port listen port | string | false |
-| clusterNativeListenPort | ClusterNativePort for multi-level cluster setup. More details: https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#multi-level-cluster-setup | string | false |
+| clusterNativeListenPort | ClusterNativePort for multi-level cluster setup. More details: https://docs.acceldata.io/Cluster-VictoriaMetrics.html#multi-level-cluster-setup | string | false |
 | schedulerName | SchedulerName - defines kubernetes scheduler name | string | false |
 | runtimeClassName | RuntimeClassName - defines runtime class for kubernetes pod. https://kubernetes.io/docs/concepts/containers/runtime-class/ | *string | false |
 | serviceSpec | ServiceSpec that will be added to vmselect service spec | *[AdditionalServiceSpec](#additionalservicespec) | false |
@@ -2048,8 +2048,8 @@ TargetRef describes target for user traffic forwarding. one of target types can 
 | headers | Headers represent additional http headers, that vmauth uses in form of [\&#34;header_key: header_value\&#34;] multiple values for header key: [\&#34;header_key: value1,value2\&#34;] it&#39;s available since 1.68.0 version of vmauth | []string | false |
 | response_headers | ResponseHeaders represent additional http headers, that vmauth adds for request response in form of [\&#34;header_key: header_value\&#34;] multiple values for header key: [\&#34;header_key: value1,value2\&#34;] it&#39;s available since 1.93.0 version of vmauth | []string | false |
 | retry_status_codes | RetryStatusCodes defines http status codes in numeric format for request retries Can be defined per target or at VMUser.spec level e.g. [429,503] | []int | false |
-| load_balancing_policy | LoadBalancingPolicy defines load balancing policy to use for backend urls. Supported policies: least_loaded, first_available. See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default \&#34;least_loaded\&#34;) | *string | false |
-| drop_src_path_prefix_parts | DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend. See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details. | *int | false |
+| load_balancing_policy | LoadBalancingPolicy defines load balancing policy to use for backend urls. Supported policies: least_loaded, first_available. See https://docs.acceldata.io/vmauth.html#load-balancing for more details (default \&#34;least_loaded\&#34;) | *string | false |
+| drop_src_path_prefix_parts | DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend. See https://docs.acceldata.io/vmauth.html#dropping-request-path-prefix for more details. | *int | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -2067,7 +2067,7 @@ VMUser is the Schema for the vmusers API
 
 ## VMUserIPFilters
 
-VMUserIPFilters defines filters for IP addresses supported only with enterprise version of vmauth https://docs.victoriametrics.com/vmauth.html#ip-filters
+VMUserIPFilters defines filters for IP addresses supported only with enterprise version of vmauth https://docs.acceldata.io/vmauth.html#ip-filters
 
 | Field | Description | Scheme | Required |
 | ----- | ----------- | ------ | -------- |
@@ -2102,14 +2102,14 @@ VMUserSpec defines the desired state of VMUser
 | bearerToken | BearerToken Authorization header value for accessing protected endpoint. | *string | false |
 | targetRefs | TargetRefs - reference to endpoints, which user may access. | [][TargetRef](#targetref) | true |
 | default_url | DefaultURLs backend url for non-matching paths filter usually used for default backend with error message | []string | false |
-| ip_filters | IPFilters defines per target src ip filters supported only with enterprise version of vmauth https://docs.victoriametrics.com/vmauth.html#ip-filters | [VMUserIPFilters](#vmuseripfilters) | false |
+| ip_filters | IPFilters defines per target src ip filters supported only with enterprise version of vmauth https://docs.acceldata.io/vmauth.html#ip-filters | [VMUserIPFilters](#vmuseripfilters) | false |
 | headers | Headers represent additional http headers, that vmauth uses in form of [\&#34;header_key: header_value\&#34;] multiple values for header key: [\&#34;header_key: value1,value2\&#34;] it&#39;s available since 1.68.0 version of vmauth | []string | false |
 | response_headers | ResponseHeaders represent additional http headers, that vmauth adds for request response in form of [\&#34;header_key: header_value\&#34;] multiple values for header key: [\&#34;header_key: value1,value2\&#34;] it&#39;s available since 1.93.0 version of vmauth | []string | false |
 | retry_status_codes | RetryStatusCodes defines http status codes in numeric format for request retries e.g. [429,503] | []int | false |
 | max_concurrent_requests | MaxConcurrentRequests defines max concurrent requests per user 300 is default value for vmauth | *int | false |
-| load_balancing_policy | LoadBalancingPolicy defines load balancing policy to use for backend urls. Supported policies: least_loaded, first_available. See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default \&#34;least_loaded\&#34;) | *string | false |
-| drop_src_path_prefix_parts | DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend. See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details. | *int | false |
-| tls_insecure_skip_verify | TLSInsecureSkipVerify - whether to skip TLS verification when connecting to backend over HTTPS. See https://docs.victoriametrics.com/vmauth.html#backend-tls-setup | bool | false |
+| load_balancing_policy | LoadBalancingPolicy defines load balancing policy to use for backend urls. Supported policies: least_loaded, first_available. See https://docs.acceldata.io/vmauth.html#load-balancing for more details (default \&#34;least_loaded\&#34;) | *string | false |
+| drop_src_path_prefix_parts | DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend. See https://docs.acceldata.io/vmauth.html#dropping-request-path-prefix for more details. | *int | false |
+| tls_insecure_skip_verify | TLSInsecureSkipVerify - whether to skip TLS verification when connecting to backend over HTTPS. See https://docs.acceldata.io/vmauth.html#backend-tls-setup | bool | false |
 | metric_labels | MetricLabels - additional labels for metrics exported by vmauth for given user. | map[string]string | false |
 | disable_secret_creation | DisableSecretCreation skips related secret creation for vmuser | bool | false |
 
@@ -2208,7 +2208,7 @@ VMAuthSpec defines the desired state of VMAuth
 | readinessGates | ReadinessGates defines pod readiness gates | []v1.PodReadinessGate | false |
 | unauthorizedAccessConfig | UnauthorizedAccessConfig configures access for un authorized users | [][VMAuthUnauthorizedPath](#vmauthunauthorizedpath) | false |
 | useStrictSecurity | UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions | *bool | false |
-| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.victoriametrics.com/enterprise.html | *[License](#license) | false |
+| license | License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See: https://docs.acceldata.io/enterprise.html | *[License](#license) | false |
 
 [Back to TOC](#table-of-contents)
 

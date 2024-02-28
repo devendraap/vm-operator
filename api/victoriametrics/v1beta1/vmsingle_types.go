@@ -176,14 +176,14 @@ type VMSingleSpec struct {
 	// Note VictoriaMetrics has data/ and indexdb/ folders
 	// metrics from data/ removed eventually as soon as partition leaves retention period
 	// reverse index data at indexdb rotates once at the half of configured retention period
-	// https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#retention
+	// https://docs.acceldata.io/Single-server-VictoriaMetrics.html#retention
 	RetentionPeriod string `json:"retentionPeriod"`
 	// VMBackup configuration for backup
 	// +optional
 	VMBackup *VMBackup `json:"vmBackup,omitempty"`
 	// License allows to configure license key to be used for enterprise features.
 	// Using license key is supported starting from VictoriaMetrics v1.94.0.
-	// See: https://docs.victoriametrics.com/enterprise.html
+	// See: https://docs.acceldata.io/enterprise.html
 	// +optional
 	License *License `json:"license,omitempty"`
 	// ExtraArgs that will be passed to  VMSingle pod

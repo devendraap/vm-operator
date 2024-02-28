@@ -92,7 +92,7 @@ rules:
   verbs:
     - '*'
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmagents
     - vmagents/finalizers
@@ -105,7 +105,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmagents/status
   verbs:
@@ -113,7 +113,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmalertmanagers
     - vmalertmanagers/finalizers
@@ -126,7 +126,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmalertmanagers/status
   verbs:
@@ -134,7 +134,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmalerts
     - vmalerts/finalizers
@@ -147,7 +147,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmalerts/status
   verbs:
@@ -155,7 +155,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmclusters
     - vmclusters/finalizers
@@ -168,7 +168,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmclusters/status
   verbs:
@@ -176,7 +176,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmpodscrapes
   verbs:
@@ -188,7 +188,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmpodscrapes/status
   verbs:
@@ -196,7 +196,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmrules
   verbs:
@@ -208,7 +208,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmrules/status
   verbs:
@@ -216,7 +216,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmservicescrapes
   verbs:
@@ -228,7 +228,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmservicescrapes/status
   verbs:
@@ -236,7 +236,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmprobes
   verbs:
@@ -248,7 +248,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmprobes/status
   verbs:
@@ -257,7 +257,7 @@ rules:
     - update
 
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmsingles
     - vmsingles/finalizers
@@ -270,7 +270,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmsingles/status
   verbs:
@@ -363,14 +363,14 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmnodescrapes
     - vmnodescrapes/finalizers
   verbs:
     - '*'
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmnodescrapes/status
   verbs:
@@ -378,14 +378,14 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmstaticscrapes
     - vmnodescrapes/finalizers
   verbs:
     - '*'
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmstaticscrapes/status
   verbs:
@@ -421,7 +421,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmusers
     - vmusers/finalizers
@@ -434,7 +434,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmusers/status
   verbs:
@@ -442,7 +442,7 @@ rules:
     - patch
     - update
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmauths
     - vmauths/finalizers
@@ -455,7 +455,7 @@ rules:
     - update
     - watch
 - apiGroups:
-    - operator.victoriametrics.com
+    - operator.acceldata.io
   resources:
     - vmauths/status
   verbs:
@@ -483,7 +483,7 @@ rules:
     - get
     - list
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmalertmanagerconfigs
   verbs:
@@ -495,7 +495,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmalertmanagerconfigs/status
   verbs:

@@ -36,7 +36,7 @@ Also, you can check out the [examples](#examples) section.
 ### Cadvisor scraping
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMNodeScrape
 metadata:
   name: cadvisor-metrics

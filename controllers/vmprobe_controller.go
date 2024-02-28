@@ -42,8 +42,8 @@ func (r *VMProbeReconciler) Scheme() *runtime.Scheme {
 }
 
 // Reconcile - syncs VMProbe
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmprobes,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmprobes/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmprobes,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmprobes/status,verbs=get;update;patch
 func (r *VMProbeReconciler) Reconcile(ctx context.Context, req ctrl.Request) (result ctrl.Result, err error) {
 
 	reqLogger := r.Log.WithValues("vmprobe", req.NamespacedName)

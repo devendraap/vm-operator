@@ -24,7 +24,7 @@ Learn more about [key concepts](#key-concepts) of `vmoperator` and follow the **
 - Seamless [migration from prometheus-operator](./migration.md) with auto-conversion of prometheus [custom resources](#custom-resources)
 - Simple VictoriaMetrics cluster installation, configuring, upgrading and managing with [crd-objects](./resources/README.md).
 - Ability to delegate the configuration (parts of configuration) of applications monitoring to the end-users and managing access to different configurations or configuration sections.
-- Integration with VictoriaMetrics [vmbackupmanager](https://docs.victoriametrics.com/vmbackupmanager.html) - advanced tools for making backups. Check [Backup automation for VMSingle](./resources/vmsingle.md#backup-automation) or [Backup automation for VMCluster](./resources/vmcluster.md#backup-automation).
+- Integration with VictoriaMetrics [vmbackupmanager](https://docs.acceldata.io/vmbackupmanager.html) - advanced tools for making backups. Check [Backup automation for VMSingle](./resources/vmsingle.md#backup-automation) or [Backup automation for VMCluster](./resources/vmcluster.md#backup-automation).
 - Everything you need for monitoring out of the box in [k8s-stack helm chart](https://victoriametrics.github.io/helm-charts/charts/victoria-metrics-k8s-stack/) with ready-made usecases and solutions.
 - Ability to template your own deployment scenarios.
 

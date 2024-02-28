@@ -2,7 +2,7 @@
 # Cluster-wide aggregator of resource usage data. 
 # https://github.com/kubernetes-sigs/metrics-server
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   name: metrics-server

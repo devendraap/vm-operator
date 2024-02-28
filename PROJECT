@@ -1,102 +1,102 @@
-domain: victoriametrics.com
+domain: acceldata.io
 layout: go.kubebuilder.io/v2
 projectName: victoriametrics-operator
 repo: github.com/VictoriaMetrics/operator
 resources:
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMAgent
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMAlert
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMAlertmanager
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMAlertmanagerConfig
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMPodScrape
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMRule
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMServiceScrape
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMSingle
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMCluster
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMProbe
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMNodeScrape
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMStaticScrape
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMUser
   path: github.com/VictoriaMetrics/operator/api/v1beta1
   version: v1beta1
 -
   controller: true
-  domain: victoriametrics.com
+  domain: acceldata.io
   group: operator
   kind: VMAuth
   path: github.com/VictoriaMetrics/operator/api/v1beta1

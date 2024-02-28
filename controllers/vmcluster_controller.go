@@ -34,9 +34,9 @@ func (r *VMClusterReconciler) Scheme() *runtime.Scheme {
 }
 
 // Reconcile general reconcile method for controller
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmclusters,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmclusters/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmclusters/finalizers,verbs=*
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmclusters,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmclusters/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmclusters/finalizers,verbs=*
 // +kubebuilder:rbac:groups=apps,resources=statefulsets,verbs=*
 func (r *VMClusterReconciler) Reconcile(ctx context.Context, request ctrl.Request) (result ctrl.Result, err error) {
 	reqLogger := log.WithValues("Request.Namespace", request.Namespace, "Request.Name", request.Name)

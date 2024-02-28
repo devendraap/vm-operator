@@ -1,6 +1,6 @@
 
 # Prometheus Monitor Service (Metrics)
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   labels:

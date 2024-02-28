@@ -84,7 +84,7 @@ Here are some examples of `VMAlert` configuration with selectors:
 
 ```yaml
 # select all rule objects in the cluster
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: vmalert-select-all
@@ -95,7 +95,7 @@ spec:
 ---
 
 # select all rule objects in specific namespace (my-namespace)
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: vmalert-select-ns
@@ -140,7 +140,7 @@ You have to specify all pod fqdns  at `VMAlert.spec.notifiers.[url]`. Or you can
     
     ---
     
-    apiVersion: operator.victoriametrics.com/v1beta1
+    apiVersion: operator.acceldata.io/v1beta1
     kind: VMAlertmanager
     metadata:
       name: example
@@ -156,7 +156,7 @@ You have to specify all pod fqdns  at `VMAlert.spec.notifiers.[url]`. Or you can
     ```
 - vmalert with fqdns:
     ```yaml
-    apiVersion: operator.victoriametrics.com/v1beta1
+    apiVersion: operator.acceldata.io/v1beta1
     kind: VMAlert
     metadata:
       name: example-ha
@@ -174,7 +174,7 @@ You have to specify all pod fqdns  at `VMAlert.spec.notifiers.[url]`. Or you can
     ```
 - vmalert with service discovery:
     ```yaml
-    apiVersion: operator.victoriametrics.com/v1beta1
+    apiVersion: operator.acceldata.io/v1beta1
     kind: VMAlert
     metadata:
       name: example-ha
@@ -199,7 +199,7 @@ You have to specify all pod fqdns  at `VMAlert.spec.notifiers.[url]`. Or you can
 In addition, you need to specify `remoteWrite` and `remoteRead` urls for restoring alert states after restarts:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: example-ha
@@ -219,14 +219,14 @@ spec:
     url: http://vmselect-demo.vm.svc:8481/select/0/prometheus
 ```
 
-More details about `remoteWrite` and `remoteRead` you can read in [vmalert docs](https://docs.victoriametrics.com/vmalert.html#alerts-state-on-restarts).
+More details about `remoteWrite` and `remoteRead` you can read in [vmalert docs](https://docs.acceldata.io/vmalert.html#alerts-state-on-restarts).
 
 ## Version management
 
 To set `VMAlert` version add `spec.image.tag` name from [releases](https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: example-vmalert
@@ -241,7 +241,7 @@ spec:
 Also, you can specify `imagePullSecrets` if you are pulling images from private repo:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: example-vmalert
@@ -257,15 +257,15 @@ spec:
 
 ## Enterprise features
 
-VMAlert supports features [Reading rules from object storage](https://docs.victoriametrics.com/vmalert.html#reading-rules-from-object-storage)
-and [Multitenancy](https://docs.victoriametrics.com/vmalert.html#multitenancy)
-from [VictoriaMetrics Enterprise](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+VMAlert supports features [Reading rules from object storage](https://docs.acceldata.io/vmalert.html#reading-rules-from-object-storage)
+and [Multitenancy](https://docs.acceldata.io/vmalert.html#multitenancy)
+from [VictoriaMetrics Enterprise](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 
-For using Enterprise version of [vmalert](https://docs.victoriametrics.com/vmalert.html)
+For using Enterprise version of [vmalert](https://docs.acceldata.io/vmalert.html)
 you need to change version of `VMAlert` to version with `-enterprise` suffix using [Version management](#version-management).
 
 All the enterprise apps require `-eula` command-line flag to be passed to them.
-This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 So you can use [extraArgs](./README.md#extra-arguments) for passing this flag to `VMAlert`:
 
 ### Reading rules from object storage
@@ -273,12 +273,12 @@ So you can use [extraArgs](./README.md#extra-arguments) for passing this flag to
 After that you can pass `-rule` command-line argument with `s3://` or `gs://`
 to `VMAlert` with [extraArgs](./README.md#extra-arguments).
 
-More details about reading rules from object storage you can read in [vmalert docs](https://docs.victoriametrics.com/vmalert.html#reading-rules-from-object-storage).
+More details about reading rules from object storage you can read in [vmalert docs](https://docs.acceldata.io/vmalert.html#reading-rules-from-object-storage).
 
-Here are complete example for [Reading rules from object storage](https://docs.victoriametrics.com/vmalert.html#reading-rules-from-object-storage):
+Here are complete example for [Reading rules from object storage](https://docs.acceldata.io/vmalert.html#reading-rules-from-object-storage):
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: vmalert-ent-example
@@ -290,11 +290,11 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmalert enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
     
     # using enterprise features: Reading rules from object storage
-    # more details about reading rules from object storage you can read on https://docs.victoriametrics.com/vmalert.html#reading-rules-from-object-storage
+    # more details about reading rules from object storage you can read on https://docs.acceldata.io/vmalert.html#reading-rules-from-object-storage
     rule: s3://bucket/dir/alert.rules
     
   # ...other fields...
@@ -302,7 +302,7 @@ spec:
 
 ### Multitenancy
 
-After enabling enterprise version you can use [Multitenancy](https://docs.victoriametrics.com/vmalert.html#multitenancy) 
+After enabling enterprise version you can use [Multitenancy](https://docs.acceldata.io/vmalert.html#multitenancy) 
 feature in `VMAlert`.
 
 For that you need to set `clusterMode` commad-line flag 
@@ -312,7 +312,7 @@ in [VMRule](./vmrule.md#enterprise-features):
 
 {% raw %}
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: vmalert-ent-example
@@ -324,18 +324,18 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmalert enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
 
     # using enterprise features: Multitenancy
-    # more details about multitenancy you can read on https://docs.victoriametrics.com/vmalert.html#multitenancy
+    # more details about multitenancy you can read on https://docs.acceldata.io/vmalert.html#multitenancy
     clusterMode: true 
 
   # ...other fields...
 
 ---
 
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMRule
 metadata:
   name: vmrule-ent-example
@@ -344,7 +344,7 @@ spec:
     - name: vmalert-1
       rules:
         # using enterprise features: Multitenancy
-        # more details about multitenancy you can read on https://docs.victoriametrics.com/vmalert.html#multitenancy
+        # more details about multitenancy you can read on https://docs.acceldata.io/vmalert.html#multitenancy
         - tenant: 1
           alert: vmalert config reload error
           expr: delta(vmalert_config_last_reload_errors_total[5m]) > 0
@@ -361,7 +361,7 @@ spec:
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: example-vmalert

@@ -5,7 +5,7 @@ metadata:
   name: vmauth-viewer-role
 rules:
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmauths
   verbs:
@@ -13,7 +13,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmauths/status
   verbs:

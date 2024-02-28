@@ -44,7 +44,7 @@ type VMUserSpec struct {
 	DefaultURLs []string `json:"default_url,omitempty"`
 	// IPFilters defines per target src ip filters
 	// supported only with enterprise version of vmauth
-	// https://docs.victoriametrics.com/vmauth.html#ip-filters
+	// https://docs.acceldata.io/vmauth.html#ip-filters
 	// +optional
 	IPFilters VMUserIPFilters `json:"ip_filters,omitempty"`
 
@@ -75,18 +75,18 @@ type VMUserSpec struct {
 
 	// LoadBalancingPolicy defines load balancing policy to use for backend urls.
 	// Supported policies: least_loaded, first_available.
-	// See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+	// See https://docs.acceldata.io/vmauth.html#load-balancing for more details (default "least_loaded")
 	// +optional
 	// +kubebuilder:validation:Enum=least_loaded;first_available
 	LoadBalancingPolicy *string `json:"load_balancing_policy,omitempty"`
 
 	// DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-	// See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+	// See https://docs.acceldata.io/vmauth.html#dropping-request-path-prefix for more details.
 	// +optional
 	DropSrcPathPrefixParts *int `json:"drop_src_path_prefix_parts,omitempty"`
 
 	// TLSInsecureSkipVerify - whether to skip TLS verification when connecting to backend over HTTPS.
-	// See https://docs.victoriametrics.com/vmauth.html#backend-tls-setup
+	// See https://docs.acceldata.io/vmauth.html#backend-tls-setup
 	// +optional
 	TLSInsecureSkipVerify bool `json:"tls_insecure_skip_verify,omitempty"`
 
@@ -142,19 +142,19 @@ type TargetRef struct {
 	RetryStatusCodes []int `json:"retry_status_codes,omitempty"`
 	// LoadBalancingPolicy defines load balancing policy to use for backend urls.
 	// Supported policies: least_loaded, first_available.
-	// See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+	// See https://docs.acceldata.io/vmauth.html#load-balancing for more details (default "least_loaded")
 	// +optional
 	// +kubebuilder:validation:Enum=least_loaded;first_available
 	LoadBalancingPolicy *string `json:"load_balancing_policy,omitempty"`
 	// DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-	// See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+	// See https://docs.acceldata.io/vmauth.html#dropping-request-path-prefix for more details.
 	// +optional
 	DropSrcPathPrefixParts *int `json:"drop_src_path_prefix_parts,omitempty"`
 }
 
 // VMUserIPFilters defines filters for IP addresses
 // supported only with enterprise version of vmauth
-// https://docs.victoriametrics.com/vmauth.html#ip-filters
+// https://docs.acceldata.io/vmauth.html#ip-filters
 type VMUserIPFilters struct {
 	DenyList  []string `json:"deny_list,omitempty"`
 	AllowList []string `json:"allow_list,omitempty"`

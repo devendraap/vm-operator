@@ -1,4 +1,4 @@
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: example-vmagent-tls
@@ -38,7 +38,7 @@ spec:
         keyFile: "/etc/vm/secrets/remote-tls/key"
 
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   name: example-scrape-tls

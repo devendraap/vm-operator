@@ -27,9 +27,9 @@ const (
 	// MetaMergeStrategyLabel merge strategy by default prefer prometheus meta labels
 	// but with annotation value added to VMObject:
 	// annotations:
-	//   operator.victoriametrics.com/merge-api-strategy: prefer-victoriametrics
+	//   operator.acceldata.io/merge-api-strategy: prefer-victoriametrics
 	// metadata from VMObject will be preferred during merge
-	MetaMergeStrategyLabel = "operator.victoriametrics.com/merge-meta-strategy"
+	MetaMergeStrategyLabel = "operator.acceldata.io/merge-meta-strategy"
 	// MetaPreferVM - prefers VM object meta values, ignores prometheus
 	MetaPreferVM = "prefer-victoriametrics"
 	// MetaPreferProm - prefers prometheus
@@ -44,8 +44,8 @@ const (
 	// IgnoreConversionLabel this annotation disables updating of corresponding VMObject
 	// must be added to annotation of VMObject
 	// annotations:
-	//  operator.victoriametrics.com/ignore-prometheus-updates: enabled
-	IgnoreConversionLabel = "operator.victoriametrics.com/ignore-prometheus-updates"
+	//  operator.acceldata.io/ignore-prometheus-updates: enabled
+	IgnoreConversionLabel = "operator.acceldata.io/ignore-prometheus-updates"
 	// IgnoreConversion - disables updates from prometheus api
 	IgnoreConversion = "enabled"
 )

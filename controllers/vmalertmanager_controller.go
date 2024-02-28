@@ -50,9 +50,9 @@ func (r *VMAlertmanagerReconciler) Scheme() *runtime.Scheme {
 }
 
 // Reconcile general reconcile method for controller
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmalertmanagers,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmalertmanagers/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmalertmanagers/finalizers,verbs=*
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmalertmanagers,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmalertmanagers/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmalertmanagers/finalizers,verbs=*
 // +kubebuilder:rbac:groups=apps,resources=statefulsets,verbs=*
 // +kubebuilder:rbac:groups="",resources=configmaps,verbs=*
 // +kubebuilder:rbac:groups="",resources=secrets,verbs=*

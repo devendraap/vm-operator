@@ -49,12 +49,12 @@ func (r *VMSingleReconciler) Scheme() *runtime.Scheme {
 }
 
 // Reconcile general reconcile method for controller
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmsingles,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmsingles/finalizers,verbs=*
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmsingles,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmsingles/finalizers,verbs=*
 // +kubebuilder:rbac:groups=apps,resources=deployments,verbs=*
 // +kubebuilder:rbac:groups=apps,resources=replicasets,verbs=*
 // +kubebuilder:rbac:groups="",resources=persistentvolumeclaims,verbs=*
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmsingles/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmsingles/status,verbs=get;update;patch
 func (r *VMSingleReconciler) Reconcile(ctx context.Context, req ctrl.Request) (result ctrl.Result, err error) {
 	reqLogger := r.Log.WithValues("vmsingle", req.NamespacedName)
 

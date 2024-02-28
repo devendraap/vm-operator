@@ -103,19 +103,19 @@ Converted objects will be linked to the original ones and will be deleted by kub
 
 Conversion of api objects can be controlled by annotations, added to `VMObject`s.
 
-Annotation `operator.victoriametrics.com/ignore-prometheus-updates` controls updates from Prometheus api objects.
+Annotation `operator.acceldata.io/ignore-prometheus-updates` controls updates from Prometheus api objects.
 
 By default, it set to `disabled`. You define it to `enabled` state and all updates from Prometheus api objects will be ignored.
 
 Example:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   annotations:
     meta.helm.sh/release-name: prometheus
-    operator.victoriametrics.com/ignore-prometheus-updates: enabled
+    operator.acceldata.io/ignore-prometheus-updates: enabled
   labels:
     release: prometheus
   name: prometheus-monitor
@@ -123,7 +123,7 @@ spec:
   endpoints: []
 ```
 
-Annotation `operator.victoriametrics.com/ignore-prometheus-updates` can be set on one of the resources:
+Annotation `operator.acceldata.io/ignore-prometheus-updates` can be set on one of the resources:
 
 - [VMServiceScrape](./resources/vmservicescrape.md)
 - [VMPodScrape](./resources/vmpodscrape.md)
@@ -138,7 +138,7 @@ and [VMNodeScrape](./resources/vmnodescrape.md) because these objects are not cr
 
 Conversion of api objects can be controlled by annotations, added to `VMObject`s.
 
-Annotation `operator.victoriametrics.com/merge-meta-strategy` controls syncing of metadata labels and annotations
+Annotation `operator.acceldata.io/merge-meta-strategy` controls syncing of metadata labels and annotations
 between `VMObject`s and `Prometheus` api objects during updates to `Prometheus` objects.
 
 By default, it has `prefer-prometheus`. And annotations and labels will be used from `Prometheus` objects, manually set values will be dropped.
@@ -150,12 +150,12 @@ Two additional strategies annotations -`merge-victoriametrics-priority` and `mer
 Example:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   annotations:
     meta.helm.sh/release-name: prometheus
-    operator.victoriametrics.com/merge-meta-strategy: prefer-victoriametrics
+    operator.acceldata.io/merge-meta-strategy: prefer-victoriametrics
   labels:
     release: prometheus
   name: prometheus-monitor
@@ -163,7 +163,7 @@ spec:
   endpoints: []
 ```
 
-Annotation `operator.victoriametrics.com/merge-meta-strategy` can be set on one of the resources:
+Annotation `operator.acceldata.io/merge-meta-strategy` can be set on one of the resources:
 
 - [VMServiceScrape](./resources/vmservicescrape.md)
 - [VMPodScrape](./resources/vmpodscrape.md)
@@ -204,6 +204,6 @@ VM_PROMETHEUSCONVERTERADDARGOCDIGNOREANNOTATIONS=true
 
 ## Data migration
 
-You can use [vmctl](https://docs.victoriametrics.com/vmctl.html) for migrating your data from Prometheus to VictoriaMetrics.
+You can use [vmctl](https://docs.acceldata.io/vmctl.html) for migrating your data from Prometheus to VictoriaMetrics.
 
-See [this doc](https://docs.victoriametrics.com/vmctl.html#migrating-data-from-prometheus) for more details.
+See [this doc](https://docs.acceldata.io/vmctl.html#migrating-data-from-prometheus) for more details.

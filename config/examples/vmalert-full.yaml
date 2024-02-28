@@ -10,7 +10,7 @@ stringData:
   username: admin
   password: passw0rd
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: example-vmalert

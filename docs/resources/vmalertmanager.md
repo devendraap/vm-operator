@@ -67,7 +67,7 @@ stringData:
 
 ---
 
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: example-alertmanager
@@ -82,7 +82,7 @@ Also, if there is no secret data at configuration, or you just want to redefine 
 You can define configuration at `spec.configRawYaml` section of `VMAlertmanager` configuration:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: example-alertmanager
@@ -153,7 +153,7 @@ Here are some examples of `VMAlertmanager` configuration with selectors:
 
 ```yaml
 # select all config objects in the cluster
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: vmalertmanager-select-all
@@ -164,7 +164,7 @@ spec:
 ---
 
 # select all config objects in specific namespace (my-namespace)
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: vmalertmanager-select-ns
@@ -183,7 +183,7 @@ spec:
 
   {% raw %}
   ```yaml
-  apiVersion: operator.victoriametrics.com/v1beta1
+  apiVersion: operator.acceldata.io/v1beta1
   kind: VMAlertmanager
   metadata:
     name: example-alertmanager
@@ -232,7 +232,7 @@ The Victoria Metrics Operator ensures that Alertmanager clusters are properly co
 To set `VMAlertmanager` version add `spec.image.tag` name from [releases](https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: example-vmalertmanager
@@ -247,7 +247,7 @@ spec:
 Also, you can specify `imagePullSecrets` if you are pulling images from private repo:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: example-vmalertmanager
@@ -264,7 +264,7 @@ spec:
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: vmalertmanager-example

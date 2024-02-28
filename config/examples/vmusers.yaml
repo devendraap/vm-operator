@@ -1,4 +1,4 @@
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: vmuser-sample
@@ -15,7 +15,7 @@ spec:
         namespace: default
       paths: ["/targets", "/api/v1/targets","/api/v1/write"]
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: vmuser-sample-1
@@ -31,7 +31,7 @@ spec:
         namespace: default
       paths: ["/targets", "/api/v1/targets","/api/v1/write"]
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: vmuser-sample-2
@@ -55,7 +55,7 @@ metadata:
   name: user-password
 type: Opaque
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: vmuser-sample-2

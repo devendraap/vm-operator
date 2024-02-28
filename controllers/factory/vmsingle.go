@@ -424,7 +424,7 @@ func makeSpecForVMBackuper(
 	license *victoriametricsv1beta1.License,
 ) (*corev1.Container, error) {
 	if !cr.AcceptEULA && !license.IsProvided() {
-		log.Info("EULA or license wasn't defined, update your backup settings. Follow https://docs.victoriametrics.com/enterprise.html for further instructions.")
+		log.Info("EULA or license wasn't defined, update your backup settings. Follow https://docs.acceldata.io/enterprise.html for further instructions.")
 		return nil, nil
 	}
 	if cr.Image.Repository == "" {

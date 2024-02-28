@@ -57,16 +57,16 @@ Field `extraArgs` is supported for the following custom resources:
 
 Supported flags for each application can be found the in the corresponding documentation:
 
-- [VMAgent flags](https://docs.victoriametrics.com/vmagent.html#advanced-usage)
-- [VMAlert](https://docs.victoriametrics.com/vmalert.html#configuration)
-- [VMAuth](https://docs.victoriametrics.com/vmauth.html#advanced-usage)
-- [VMCluster](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#list-of-command-line-flags)
-- [VMSingle](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#list-of-command-line-flags)
+- [VMAgent flags](https://docs.acceldata.io/vmagent.html#advanced-usage)
+- [VMAlert](https://docs.acceldata.io/vmalert.html#configuration)
+- [VMAuth](https://docs.acceldata.io/vmauth.html#advanced-usage)
+- [VMCluster](https://docs.acceldata.io/Cluster-VictoriaMetrics.html#list-of-command-line-flags)
+- [VMSingle](https://docs.acceldata.io/Single-server-VictoriaMetrics.html#list-of-command-line-flags)
 
 Usage example:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: vmsingle-example-exrtaargs
@@ -99,7 +99,7 @@ spec:
 ```
 
 This feature really useful for using with 
-[`-envflag.enable` command-line argument](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#environment-variables).
+[`-envflag.enable` command-line argument](https://docs.acceldata.io/Single-server-VictoriaMetrics.html#environment-variables).
 
 ## Examples
 
@@ -155,7 +155,7 @@ See details about these fields in the [Specification](#specification).
 
 ## Enterprise features
 
-Operator supports following [Enterprise features for VictoriaMetrics components](https://docs.victoriametrics.com/enterprise.html):
+Operator supports following [Enterprise features for VictoriaMetrics components](https://docs.acceldata.io/enterprise.html):
 
 - [VMAgent Enterprise features](./vmagent.md#enterprise-features):
     - [Reading metrics from kafka](./vmagent.md#reading-metrics-from-kafka)
@@ -181,7 +181,7 @@ Operator supports following [Enterprise features for VictoriaMetrics components]
     - [IP Filters](./vmuser.md#ip-filters)
 
 More information about enterprise features you can read
-on [VictoriaMetrics Enterprise page](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+on [VictoriaMetrics Enterprise page](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 
 ## Configuration synchronization
 

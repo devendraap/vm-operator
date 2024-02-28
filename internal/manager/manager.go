@@ -127,7 +127,7 @@ func RunManager(ctx context.Context) error {
 		// port for webhook
 		Port:             9443,
 		LeaderElection:   *enableLeaderElection,
-		LeaderElectionID: "57410f0d.victoriametrics.com",
+		LeaderElectionID: "57410f0d.acceldata.io",
 		ClientDisableCacheFor: []client.Object{&v1.Secret{}, &v1.ConfigMap{}, &v1.Pod{}, &v12.Deployment{},
 			&v12.StatefulSet{},
 			&v1beta1.PodSecurityPolicy{}, &v1beta1.PodDisruptionBudget{}, &v1.Namespace{}},

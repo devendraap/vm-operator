@@ -21,7 +21,7 @@ stringData:
       "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account-email"
     }
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMCluster
 metadata:
   name: example-vmcluster-persistent

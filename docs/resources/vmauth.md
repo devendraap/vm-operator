@@ -66,7 +66,7 @@ Here are some examples of `VMAuth` configuration with selectors:
 
 ```yaml
 # select all user objects in the cluster
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: vmauth-select-all
@@ -77,7 +77,7 @@ spec:
 ---
 
 # select all user objects in specific namespace (my-namespace)
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: vmauth-select-ns
@@ -95,7 +95,7 @@ You can configure `VMAuth` to allow unauthorized access for specified routes wit
 For instance:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: vmauth-unauthorized-example
@@ -116,7 +116,7 @@ with `ip_filters` field.
 The `VMAuth` resource is stateless, so it can be scaled horizontally by increasing the number of replicas:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: vmauth-example
@@ -130,7 +130,7 @@ spec:
 To set `VMAuth` version add `spec.image.tag` name from [releases](https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: example-vmauth
@@ -145,7 +145,7 @@ spec:
 Also, you can specify `imagePullSecrets` if you are pulling images from private repo:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: example-vmauth
@@ -161,14 +161,14 @@ spec:
 
 ## Enterprise features
 
-Custom resource `VMAuth` supports feature [IP filters](https://docs.victoriametrics.com/vmauth.html#ip-filters)
-from [VictoriaMetrics Enterprise](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+Custom resource `VMAuth` supports feature [IP filters](https://docs.acceldata.io/vmauth.html#ip-filters)
+from [VictoriaMetrics Enterprise](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 
-For using Enterprise version of [vmauth](https://docs.victoriametrics.com/vmauth.html) 
+For using Enterprise version of [vmauth](https://docs.acceldata.io/vmauth.html) 
 you need to change version of `vmauth` to version with `-enterprise` suffix using [Version management](#version-management).
 
 All the enterprise apps require `-eula` command-line flag to be passed to them. 
-This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 So you can use [extraArgs](./README.md#extra-arguments) for passing this flag to `VMAuth`:
 
 ### IP Filters
@@ -179,7 +179,7 @@ and field `ip_filters` for `VMAuth`.
 Here are complete example with described above:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: vmauth-ent-example
@@ -191,11 +191,11 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmauth enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
   
   # using enterprise features: ip filters for vmauth
-  # more details about ip filters you can read in https://docs.victoriametrics.com/vmauth.html#ip-filters
+  # more details about ip filters you can read in https://docs.acceldata.io/vmauth.html#ip-filters
   ip_filters:
     allow_list:
       - 10.0.0.0/24
@@ -215,7 +215,7 @@ spec:
 
 ---
 
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: vmuser-ent-example
@@ -224,7 +224,7 @@ spec:
   password: simple-password
 
   # using enterprise features: ip filters for vmuser
-  # more details about ip filters you can read in https://docs.victoriametrics.com/vmuser.html#enterprise-features
+  # more details about ip filters you can read in https://docs.acceldata.io/vmuser.html#enterprise-features
   ip_filters:
     allow_list:
       - 10.0.0.0/24
@@ -236,7 +236,7 @@ spec:
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: example

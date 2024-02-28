@@ -17,7 +17,7 @@ func (r *VMSingle) SetupWebhookWithManager(mgr ctrl.Manager) error {
 		Complete()
 }
 
-// +kubebuilder:webhook:verbs=create;update,admissionReviewVersions=v1,sideEffects=none,path=/validate-operator-victoriametrics-com-v1beta1-vmsingle,mutating=false,failurePolicy=fail,groups=operator.victoriametrics.com,resources=vmsingles,versions=v1beta1,name=vvmsingle.kb.io
+// +kubebuilder:webhook:verbs=create;update,admissionReviewVersions=v1,sideEffects=none,path=/validate-operator-victoriametrics-com-v1beta1-vmsingle,mutating=false,failurePolicy=fail,groups=operator.acceldata.io,resources=vmsingles,versions=v1beta1,name=vvmsingle.kb.io
 
 var _ webhook.Validator = &VMSingle{}
 

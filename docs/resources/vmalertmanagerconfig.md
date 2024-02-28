@@ -36,7 +36,7 @@ With the combination of `VMRule` and `VMServiceScrape` it allows delegating conf
 Operator combines `VMAlertmanagerConfig`s into a single configuration file for `VMAlertmanager`.
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanagerConfig
 metadata:
   name: example-email-web
@@ -68,7 +68,7 @@ It can be disabled, by setting the following value to the VMAlertmanager: `spec.
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanagerConfig
 metadata:
   name: example

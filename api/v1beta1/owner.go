@@ -22,7 +22,7 @@ const (
 )
 
 func (c CRDName) String() string {
-	return []string{"vmagents.operator.victoriametrics.com", "vmalerts.operator.victoriametrics.com", "vmsingles.operator.victoriametrics.com", "vmclusters.operator.victoriametrics.com", "vmauths.operator.victoriametrics.com", "vmalertmanagers.operator.victoriametrics.com"}[c]
+	return []string{"vmagents.operator.acceldata.io", "vmalerts.operator.acceldata.io", "vmsingles.operator.acceldata.io", "vmclusters.operator.acceldata.io", "vmauths.operator.acceldata.io", "vmalertmanagers.operator.acceldata.io"}[c]
 }
 
 type crdInfo struct {
@@ -43,17 +43,17 @@ func Init(ctx context.Context, rclient client.Client) error {
 
 		var n CRDName
 		switch item.Name {
-		case "vmagents.operator.victoriametrics.com":
+		case "vmagents.operator.acceldata.io":
 			n = Agent
-		case "vmalerts.operator.victoriametrics.com":
+		case "vmalerts.operator.acceldata.io":
 			n = Alert
-		case "vmsingles.operator.victoriametrics.com":
+		case "vmsingles.operator.acceldata.io":
 			n = Single
-		case "vmclusters.operator.victoriametrics.com":
+		case "vmclusters.operator.acceldata.io":
 			n = Cluster
-		case "vmauths.operator.victoriametrics.com":
+		case "vmauths.operator.acceldata.io":
 			n = Auth
-		case "vmalertmanagers.operator.victoriametrics.com":
+		case "vmalertmanagers.operator.acceldata.io":
 			n = AlertManager
 		default:
 			continue

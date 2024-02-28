@@ -12,10 +12,10 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH}  $(GOCMD) test
 GOGET=$(GOCMD) get/b
 BINARY_NAME=vm-operator
-REPO=github.com/VictoriaMetrics/operator
+REPO=github.com/devendraap/vm-operator
 OPERATOR_BIN=operator-sdk
-DOCKER_REPO=victoriametrics/operator
-MANIFEST_BUILD_PLATFORM=linux/amd64,linux/arm,linux/arm64,linux/ppc64le,linux/386
+DOCKER_REPO=ghcr.io/devendraap/vm-operator
+MANIFEST_BUILD_PLATFORM=linux/amd64
 TEST_ARGS=$(GOCMD) test -covermode=atomic -coverprofile=coverage.txt -v
 APIS_BASE_PATH=api/v1beta1
 YAML_DROP_PREF=spec.versions[0].schema.openAPIV3Schema.properties.spec.properties
@@ -68,32 +68,32 @@ fix118:
 
 patch_crd_yaml:
 	docker run --rm -v "${PWD}":/workdir mikefarah/yq:2.2.0 /bin/sh -c ' \
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).dnsConfig.items.properties &&\
-   	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).dnsConfig.items.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).initContainers.items.properties &&\
-   	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).initContainers.items.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).containers.items.properties &&\
-   	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).containers.items.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).topologySpreadConstraints.items.properties &&\
-  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).topologySpreadConstraints.items.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).affinity.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).affinity.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceSpec.properties.spec.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceSpec.properties.spec.$(CRD_PRESERVE) &&\
-		$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).volumes.items.properties &&\
-   		$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).volumes.items.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).startupProbe.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).startupProbe.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).readinessProbe.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).readinessProbe.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).livenessProbe.properties &&\
-  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).livenessProbe.$(CRD_PRESERVE) &&\
-    	$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).securityContext.properties && \
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).securityContext.$(CRD_PRESERVE) && \
-    	$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceScrapeSpec.properties && \
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceScrapeSpec.$(CRD_PRESERVE) && \
-		$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).extraEnvs.items.properties.valueFrom &&\
-		$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).extraEnvs.items.$(CRD_PRESERVE) '
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).dnsConfig.items.properties &&\
+   	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).dnsConfig.items.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).initContainers.items.properties &&\
+   	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).initContainers.items.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).containers.items.properties &&\
+   	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).containers.items.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).topologySpreadConstraints.items.properties &&\
+  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).topologySpreadConstraints.items.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).affinity.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).affinity.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceSpec.properties.spec.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceSpec.properties.spec.$(CRD_PRESERVE) &&\
+		$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).volumes.items.properties &&\
+   		$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).volumes.items.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).startupProbe.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).startupProbe.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).readinessProbe.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).readinessProbe.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).livenessProbe.properties &&\
+  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).livenessProbe.$(CRD_PRESERVE) &&\
+    	$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).securityContext.properties && \
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).securityContext.$(CRD_PRESERVE) && \
+    	$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceScrapeSpec.properties && \
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).serviceScrapeSpec.$(CRD_PRESERVE) && \
+		$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).extraEnvs.items.properties.valueFrom &&\
+		$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_$(CRD_NAME).yaml $(YAML_DROP_PREFIX).extraEnvs.items.$(CRD_PRESERVE) '
 
 fix118_yaml:
 	CRD_NAME=vmalertmanagers $(MAKE) patch_crd_yaml
@@ -105,61 +105,61 @@ fix118_yaml:
 	CRD_NAME=vmclusters YAML_DROP_PREFIX=$(YAML_DROP_PREFIX).vmselect.properties $(MAKE) patch_crd_yaml
 	CRD_NAME=vmclusters YAML_DROP_PREFIX=$(YAML_DROP_PREFIX).vmstorage.properties $(MAKE) patch_crd_yaml
 	docker run --rm -v "${PWD}":/workdir mikefarah/yq:2.2.0 /bin/sh -c " \
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmsingles.yaml $(YAML_DROP_PREFIX).'-'   \
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).'-'   \
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmauths.yaml $(YAML_DROP_PREFIX).'-'   \
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).'-'   \
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmagents.yaml $(YAML_DROP_PREFIX).'-'   \
- 	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagers.yaml $(YAML_DROP_PREFIX).'-'   \
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).'-'   "
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmsingles.yaml $(YAML_DROP_PREFIX).'-'   \
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).'-'   \
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmauths.yaml $(YAML_DROP_PREFIX).'-'   \
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).'-'   \
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmagents.yaml $(YAML_DROP_PREFIX).'-'   \
+ 	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagers.yaml $(YAML_DROP_PREFIX).'-'   \
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).'-'   "
 	docker run --rm -v "${PWD}":/workdir mikefarah/yq:2.2.0 /bin/sh -c " \
-        $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.opsgenie_configs.items.properties.http_config.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.opsgenie_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.OAuth2.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.OAuth2.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.OAuth2.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.OAuth2.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.OAuth2.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.OAuth2.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.OAuth2.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.OAuth2.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.OAuth2.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.OAuth2.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.tlsConfig.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.tlsConfig.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.tlsConfig.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.tlsConfig.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.tlsConfig.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.tlsConfig.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.tlsConfig.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.tlsConfig.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.tlsConfig.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.tlsConfig.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pagerduty_configs.items.properties.http_config.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pagerduty_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
-        $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pushover_configs.items.properties.http_config.properties &&\
-  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pushover_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.slack_configs.items.properties.http_config.properties &&\
-    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.slack_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
-        $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.telegram_configs.items.properties.http_config.properties &&\
-  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.telegram_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.webhook_configs.items.properties.http_config.properties &&\
-      	$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.webhook_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).route.properties.routes.items.$(CRD_PRESERVE) &&\
-        $(YAML_ADD)  $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).route.properties.routes.type array &&\
-  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).route.properties.'-' &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vminsert.properties.hpa.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vminsert.properties.hpa.$(CRD_PRESERVE) &&\
-		$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.persistentVolume.properties.volumeClaimTemplate.properties &&\
-		$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.persistentVolume.properties.volumeClaimTemplate.$(CRD_PRESERVE) &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.hpa.properties &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.hpa.$(CRD_PRESERVE) &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
-	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmstorage.properties.claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
- 	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmagents.yaml $(YAML_DROP_PREFIX).claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
- 	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagers.yaml $(YAML_DROP_PREFIX).claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
-		$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmstorage.properties.storage.properties.volumeClaimTemplate.properties &&\
-		$(YAML_ADD) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml $(YAML_DROP_PREFIX).vmstorage.properties.storage.properties.volumeClaimTemplate.$(CRD_PRESERVE) \
+        $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.opsgenie_configs.items.properties.http_config.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.opsgenie_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.OAuth2.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.OAuth2.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.OAuth2.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.OAuth2.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.OAuth2.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.OAuth2.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.OAuth2.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.OAuth2.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.OAuth2.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.OAuth2.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.tlsConfig.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).datasource.properties.tlsConfig.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.tlsConfig.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteRead.properties.tlsConfig.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.tlsConfig.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).remoteWrite.properties.tlsConfig.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.tlsConfig.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifier.properties.tlsConfig.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.tlsConfig.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml $(YAML_DROP_PREFIX).notifiers.items.properties.tlsConfig.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pagerduty_configs.items.properties.http_config.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pagerduty_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
+        $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pushover_configs.items.properties.http_config.properties &&\
+  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.pushover_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.slack_configs.items.properties.http_config.properties &&\
+    	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.slack_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
+        $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.telegram_configs.items.properties.http_config.properties &&\
+  	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.telegram_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.webhook_configs.items.properties.http_config.properties &&\
+      	$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).receivers.items.properties.webhook_configs.items.properties.http_config.$(CRD_PRESERVE) &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).route.properties.routes.items.$(CRD_PRESERVE) &&\
+        $(YAML_ADD)  $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).route.properties.routes.type array &&\
+  	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml $(YAML_DROP_PREFIX).route.properties.'-' &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vminsert.properties.hpa.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vminsert.properties.hpa.$(CRD_PRESERVE) &&\
+		$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.persistentVolume.properties.volumeClaimTemplate.properties &&\
+		$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.persistentVolume.properties.volumeClaimTemplate.$(CRD_PRESERVE) &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.hpa.properties &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.hpa.$(CRD_PRESERVE) &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmselect.properties.claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
+	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmstorage.properties.claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
+ 	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmagents.yaml $(YAML_DROP_PREFIX).claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
+ 	    $(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagers.yaml $(YAML_DROP_PREFIX).claimTemplates.items.properties.metadata.$(CRD_PRESERVE) &&\
+		$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmstorage.properties.storage.properties.volumeClaimTemplate.properties &&\
+		$(YAML_ADD) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml $(YAML_DROP_PREFIX).vmstorage.properties.storage.properties.volumeClaimTemplate.$(CRD_PRESERVE) \
 		   	 	"
 
 fix_crd_nulls:
@@ -167,34 +167,34 @@ fix_crd_nulls:
 
 fix_crd_nulls_yaml:
 	docker run --rm -v "${PWD}":/workdir mikefarah/yq:2.2.0 /bin/sh -c ' \
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagers.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmagents.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmsingles.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmrules.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmnodescrapes.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmpodscrapes.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmservicescrapes.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmprobes.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmstaticscrapes.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmauths.yaml status &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmauths.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmusers.yaml status &&\
-        $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmusers.yaml metadata.creationTimestamp &&\
- 	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml status &&\
- 	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagerconfigs.yaml metadata.creationTimestamp &&\
-		$(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalertmanagers.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmagents.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmalerts.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmclusters.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmsingles.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmrules.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmnodescrapes.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmpodscrapes.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmservicescrapes.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmstaticscrapes.yaml metadata.creationTimestamp &&\
-	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.victoriametrics.com_vmprobes.yaml metadata.creationTimestamp'
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagers.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmagents.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmsingles.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmrules.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmnodescrapes.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmpodscrapes.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmservicescrapes.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmprobes.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmstaticscrapes.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmauths.yaml status &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmauths.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmusers.yaml status &&\
+        $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmusers.yaml metadata.creationTimestamp &&\
+ 	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml status &&\
+ 	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagerconfigs.yaml metadata.creationTimestamp &&\
+		$(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalertmanagers.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmagents.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmalerts.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmclusters.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmsingles.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmrules.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmnodescrapes.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmpodscrapes.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmservicescrapes.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmstaticscrapes.yaml metadata.creationTimestamp &&\
+	    $(YAML_DROP) $(CRD_FIX_PATH)/operator.acceldata.io_vmprobes.yaml metadata.creationTimestamp'
 
 
 doc: install-develop-tools

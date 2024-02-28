@@ -27,21 +27,21 @@ const (
 	snapshotCreate       = "/snapshot/create"
 	snapshotDelete       = "/snapshot/delete"
 	// FinalizerName name of our finalizer.
-	FinalizerName            = "apps.victoriametrics.com/finalizer"
-	SkipValidationAnnotation = "operator.victoriametrics.com/skip-validation"
+	FinalizerName            = "apps.acceldata.io/finalizer"
+	SkipValidationAnnotation = "operator.acceldata.io/skip-validation"
 	SkipValidationValue      = "true"
-	AdditionalServiceLabel   = "operator.victoriametrics.com/additional-service"
+	AdditionalServiceLabel   = "operator.acceldata.io/additional-service"
 	// PVCExpandableLabel controls checks for storageClass
-	PVCExpandableLabel = "operator.victoriametrics.com/pvc-allow-volume-expansion"
+	PVCExpandableLabel = "operator.acceldata.io/pvc-allow-volume-expansion"
 )
 
 // SchemeGroupVersion is group version used to register these objects
-var SchemeGroupVersion = schema.GroupVersion{Group: "operator.victoriametrics.com", Version: "v1beta1"}
+var SchemeGroupVersion = schema.GroupVersion{Group: "operator.acceldata.io", Version: "v1beta1"}
 
 var (
 	labelFilterPrefixes []string
 	// default ignored annotations
-	annotationFilterPrefixes = []string{"kubectl.kubernetes.io/", "operator.victoriametrics.com/", "operator.victoriametrics/last-applied-spec"}
+	annotationFilterPrefixes = []string{"kubectl.kubernetes.io/", "operator.acceldata.io/", "operator.victoriametrics/last-applied-spec"}
 )
 
 // SetLabelAndAnnotationPrefixes configures global filtering for child labels and annotations
@@ -559,12 +559,12 @@ func (m *StringOrArray) UnmarshalJSON(data []byte) error {
 
 // License holds license key for enterprise features.
 // Using license key is supported starting from VictoriaMetrics v1.94.0
-// See: https://docs.victoriametrics.com/enterprise.html
+// See: https://docs.acceldata.io/enterprise.html
 type License struct {
 	// Enterprise license key. This flag is available only in VictoriaMetrics enterprise.
-	// Documentation - https://docs.victoriametrics.com/enterprise.html
-	// for more information, visit https://victoriametrics.com/products/enterprise/ .
-	// To request a trial license, go to https://victoriametrics.com/products/enterprise/trial/
+	// Documentation - https://docs.acceldata.io/enterprise.html
+	// for more information, visit https://acceldata.io/products/enterprise/ .
+	// To request a trial license, go to https://acceldata.io/products/enterprise/trial/
 	Key *string `json:"key,omitempty"`
 	// KeyRef is reference to secret with license key for enterprise features.
 	KeyRef *v1.SecretKeySelector `json:"keyRef,omitempty"`

@@ -23,7 +23,7 @@ with ruleset defined at `VMRule` spec.
 
 Alerts and recording rules can be saved and applied as YAML files, and dynamically loaded without requiring any restart.
 
-See more details about rule configuration in [VMAlert docs](https://docs.victoriametrics.com/vmalert.html#quickstart).
+See more details about rule configuration in [VMAlert docs](https://docs.acceldata.io/vmalert.html#quickstart).
 
 ## Specification
 
@@ -34,19 +34,19 @@ Also, you can check out the [examples](#examples) section.
 
 ## Enterprise features
 
-Custom resource `VMRule` supports feature [Multitenancy](https://docs.victoriametrics.com/vmalert.html#multitenancy)
-from [VictoriaMetrics Enterprise](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+Custom resource `VMRule` supports feature [Multitenancy](https://docs.acceldata.io/vmalert.html#multitenancy)
+from [VictoriaMetrics Enterprise](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 
 ### Multitenancy
 
-For using [Multitenancy](https://docs.victoriametrics.com/vmalert.html#multitenancy) in `VMRule`
+For using [Multitenancy](https://docs.acceldata.io/vmalert.html#multitenancy) in `VMRule`
 you need to **[enable VMAlert Enterprise](./vmalert.md#enterprise-features)**.
 
 After that you can add `tenant` field for groups in `VMRule`:
 
 {% raw %}
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMRule
 metadata:
   name: vmrule-ent-example
@@ -55,7 +55,7 @@ spec:
     - name: vmalert-1
       rules:
         # using enterprise features: Multitenancy
-        # more details about multitenancy you can read on https://docs.victoriametrics.com/vmalert.html#multitenancy
+        # more details about multitenancy you can read on https://docs.acceldata.io/vmalert.html#multitenancy
         - tenant: 1
           alert: vmalert config reload error
           expr: delta(vmalert_config_last_reload_errors_total[5m]) > 0
@@ -75,7 +75,7 @@ spec:
 
 {% raw %}
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMRule
 metadata:
   name: vmrule-alerting-example
@@ -98,7 +98,7 @@ spec:
 ### Recording rule
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMRule
 metadata:
   name: vmrule-recording-example

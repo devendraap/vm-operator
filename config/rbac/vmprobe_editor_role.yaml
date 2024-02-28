@@ -5,7 +5,7 @@ metadata:
   name: vmprobe-editor-role
 rules:
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmprobes
   verbs:
@@ -18,7 +18,7 @@ rules:
   - watch
   - deletecollection
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmprobes/status
   verbs:

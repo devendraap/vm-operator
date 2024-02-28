@@ -12,7 +12,7 @@ stringData:
     aws_access_key_id = your_access_key_id
     aws_secret_access_key = your_secret_access_key
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: example-vmsingle

@@ -57,7 +57,7 @@ You will also need to deploy a (vmsingle)[./resources/vmsingle.md] where the met
 With pure operator installation you can use config with separate vmsingle and scrape object for operator like that:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   name: vmoperator
@@ -76,5 +76,5 @@ spec:
 
 See more info about object [VMServiceScrape](./resources/vmservicescrape.md).
 
-You will also need a [vmsingle](https://docs.victoriametrics.com/operator/resources/vmsingle.html) where the metrics will be collected.
+You will also need a [vmsingle](https://docs.acceldata.io/operator/resources/vmsingle.html) where the metrics will be collected.
 

@@ -80,7 +80,7 @@ rules:
     verbs:
       - '*'
   - apiGroups:
-      - operator.victoriametrics.com
+      - operator.acceldata.io
     resources:
       - vmagents
       - vmagents/finalizers
@@ -115,7 +115,7 @@ rules:
       - update
       - watch
   - apiGroups:
-      - operator.victoriametrics.com
+      - operator.acceldata.io
     resources:
       - vmagents/status
       - vmalerts/status
@@ -137,7 +137,7 @@ rules:
       - update
 
   - apiGroups:
-      - operator.victoriametrics.com
+      - operator.acceldata.io
     resources:
       - vmservicescrapes
     verbs:

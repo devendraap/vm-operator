@@ -5,7 +5,7 @@ metadata:
   name: vmuser-editor-role
 rules:
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmusers
   verbs:
@@ -17,7 +17,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmusers/status
   verbs:

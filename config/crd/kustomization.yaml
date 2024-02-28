@@ -2,21 +2,21 @@
 # since it depends on service name and namespace that are out of this kustomize package.
 # It should be run by config/default
 resources:
-- bases/operator.victoriametrics.com_vmagents.yaml
-- bases/operator.victoriametrics.com_vmalerts.yaml
-- bases/operator.victoriametrics.com_vmalertmanagers.yaml
-- bases/operator.victoriametrics.com_vmpodscrapes.yaml
-- bases/operator.victoriametrics.com_vmrules.yaml
-- bases/operator.victoriametrics.com_vmservicescrapes.yaml
-- bases/operator.victoriametrics.com_vmsingles.yaml
-- bases/operator.victoriametrics.com_vmclusters.yaml
+- bases/operator.acceldata.io_vmagents.yaml
+- bases/operator.acceldata.io_vmalerts.yaml
+- bases/operator.acceldata.io_vmalertmanagers.yaml
+- bases/operator.acceldata.io_vmpodscrapes.yaml
+- bases/operator.acceldata.io_vmrules.yaml
+- bases/operator.acceldata.io_vmservicescrapes.yaml
+- bases/operator.acceldata.io_vmsingles.yaml
+- bases/operator.acceldata.io_vmclusters.yaml
 
-- bases/operator.victoriametrics.com_vmprobes.yaml
-- bases/operator.victoriametrics.com_vmnodescrapes.yaml
-- bases/operator.victoriametrics.com_vmstaticscrapes.yaml
-- bases/operator.victoriametrics.com_vmauths.yaml
-- bases/operator.victoriametrics.com_vmusers.yaml
-- bases/operator.victoriametrics.com_vmalertmanagerconfigs.yaml
+- bases/operator.acceldata.io_vmprobes.yaml
+- bases/operator.acceldata.io_vmnodescrapes.yaml
+- bases/operator.acceldata.io_vmstaticscrapes.yaml
+- bases/operator.acceldata.io_vmauths.yaml
+- bases/operator.acceldata.io_vmusers.yaml
+- bases/operator.acceldata.io_vmalertmanagerconfigs.yaml
 # +kubebuilder:scaffold:crdkustomizeresource
 
 patchesStrategicMerge:

@@ -64,13 +64,13 @@ or with `crd`, in this case, operator queries kubernetes API, retrieves informat
 
 Here are details about other fields in `targetRefs`:
 
-- `paths` is the same as `src_paths` from [auth config](https://docs.victoriametrics.com/vmauth.html#auth-config)
-- `headers` is the same as `headers` from [auth config](https://docs.victoriametrics.com/vmauth.html#auth-config)
-- `targetPathSuffix` is the suffix for `url_prefix` (target URL) from [auth config](https://docs.victoriametrics.com/vmauth.html#auth-config)
+- `paths` is the same as `src_paths` from [auth config](https://docs.acceldata.io/vmauth.html#auth-config)
+- `headers` is the same as `headers` from [auth config](https://docs.acceldata.io/vmauth.html#auth-config)
+- `targetPathSuffix` is the suffix for `url_prefix` (target URL) from [auth config](https://docs.acceldata.io/vmauth.html#auth-config)
 
 ### Static
 
-The `static` field is the same as `url_prefix` (target URL) from [auth config](https://docs.victoriametrics.com/vmauth.html#auth-config),
+The `static` field is the same as `url_prefix` (target URL) from [auth config](https://docs.acceldata.io/vmauth.html#auth-config),
 it allows you to set a specific static URL.
 
 ### CRDRef
@@ -93,18 +93,18 @@ Additional fields like `path` and `scheme` can be added to `CRDRef` config.
 
 ## Enterprise features
 
-Custom resource `VMUser` supports feature [IP filters](https://docs.victoriametrics.com/vmauth.html#ip-filters) 
-from [VictoriaMetrics Enterprise](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+Custom resource `VMUser` supports feature [IP filters](https://docs.acceldata.io/vmauth.html#ip-filters) 
+from [VictoriaMetrics Enterprise](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 
 ### IP Filters
 
-For using [IP filters](https://docs.victoriametrics.com/vmauth.html#ip-filters) 
+For using [IP filters](https://docs.acceldata.io/vmauth.html#ip-filters) 
 you need to **[enable VMAuth Enterprise](./vmauth.md#enterprise-features)**.
 
 After that you can add `ip_filters` field to `VMUser`:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: vmuser-ent-example
@@ -113,7 +113,7 @@ spec:
   password: simple-password
 
   # using enterprise features: ip filters for vmuser
-  # more details about ip filters you can read in https://docs.victoriametrics.com/vmuser.html#enterprise-features
+  # more details about ip filters you can read in https://docs.acceldata.io/vmuser.html#enterprise-features
   ip_filters:
     allow_list:
       - 10.0.0.0/24
@@ -125,7 +125,7 @@ spec:
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: example

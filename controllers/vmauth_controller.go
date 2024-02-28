@@ -51,8 +51,8 @@ func (r *VMAuthReconciler) Scheme() *runtime.Scheme {
 }
 
 // Reconcile implements interface
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmauths,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmauths/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmauths,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmauths/status,verbs=get;update;patch
 func (r *VMAuthReconciler) Reconcile(ctx context.Context, req ctrl.Request) (result ctrl.Result, err error) {
 	l := r.Log.WithValues("vmauth", req.NamespacedName)
 

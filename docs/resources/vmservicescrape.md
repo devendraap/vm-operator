@@ -18,7 +18,7 @@ for how metrics should be exposed. Following these conventions new services will
 need to reconfigure.
 
 `VMServiceScrape` object generates part of [VMAgent](./vmagent.md) configuration with 
-[kubernetes service discovery](https://docs.victoriametrics.com/sd_configs.html#kubernetes_sd_configs) targets by corresponding `Service`.
+[kubernetes service discovery](https://docs.acceldata.io/sd_configs.html#kubernetes_sd_configs) targets by corresponding `Service`.
 It has various options for scraping configuration of target (with basic auth,tls access, by specific port name etc.).
 
 Monitoring configuration based on  `discoveryRole` setting. By default, `endpoints` is used to get objects from kubernetes api.
@@ -46,7 +46,7 @@ Using the `namespaceSelector` of the `VMServiceScrape` one can restrict the name
 discovered from. To discover targets in all namespaces the `namespaceSelector` has to be empty:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   name: example-service-scrape
@@ -74,7 +74,7 @@ More details about migration from prometheus-operator you can read in [this doc]
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   name: example-app

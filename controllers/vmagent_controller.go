@@ -48,9 +48,9 @@ type VMAgentReconciler struct {
 }
 
 // Reconcile general reconcile method
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmagents,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmagents/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmagents/finalizers,verbs=*
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmagents,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmagents/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmagents/finalizers,verbs=*
 // +kubebuilder:rbac:groups="",resources=pods,verbs=*
 // +kubebuilder:rbac:groups="",resources=nodes,verbs=get;watch;list
 // +kubebuilder:rbac:groups="",resources=nodes/proxy,verbs=get;watch;list

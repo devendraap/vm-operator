@@ -19,7 +19,7 @@ func (r *VMRule) SetupWebhookWithManager(mgr ctrl.Manager) error {
 		Complete()
 }
 
-// +kubebuilder:webhook:verbs=create;update,admissionReviewVersions=v1,sideEffects=none,path=/validate-operator-victoriametrics-com-v1beta1-vmrule,mutating=false,failurePolicy=fail,groups=operator.victoriametrics.com,resources=vmrules,versions=v1beta1,name=vvmrule.kb.io
+// +kubebuilder:webhook:verbs=create;update,admissionReviewVersions=v1,sideEffects=none,path=/validate-operator-victoriametrics-com-v1beta1-vmrule,mutating=false,failurePolicy=fail,groups=operator.acceldata.io,resources=vmrules,versions=v1beta1,name=vvmrule.kb.io
 
 var _ webhook.Validator = &VMRule{}
 

@@ -1,5 +1,5 @@
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMCluster
 metadata:
   name: example-vmcluster-persistent

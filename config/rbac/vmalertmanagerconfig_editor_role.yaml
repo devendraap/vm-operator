@@ -5,7 +5,7 @@ metadata:
   name: vmalertmanagerconfig-editor-role
 rules:
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmalertmanagerconfigs
   verbs:
@@ -17,7 +17,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmalertmanagerconfigs/status
   verbs:

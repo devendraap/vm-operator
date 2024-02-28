@@ -49,7 +49,7 @@ It will probe `VMAgent` with url - `vmagent-example-vmagent.default.svc:9115/hea
 (it was specified at [blackbox configmap](#blackbox-exporter)).
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMProbe
 metadata:
   name: vmprobe-static-example
@@ -71,7 +71,7 @@ After adding target to `VMAgent` configuration it starts probing itself throw bl
 ### Ingress targets
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMProbe
 metadata:
   name: vmprobe-ingress-example
@@ -183,7 +183,7 @@ spec:
 ### VMSingle
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: example-vmsingle-persisted
@@ -226,7 +226,7 @@ spec:
 ### VMAgent
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
    name: example-vmagent

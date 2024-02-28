@@ -1,6 +1,6 @@
 [![Latest Release](https://img.shields.io/github/release/VictoriaMetrics/operator.svg?style=flat-square)](https://github.com/VictoriaMetrics/operator/releases/latest)
 [![Docker Pulls](https://img.shields.io/docker/pulls/victoriametrics/operator.svg?maxAge=604800)](https://hub.docker.com/r/victoriametrics/operator)
-[![Slack](https://img.shields.io/badge/join%20slack-%23victoriametrics-brightgreen.svg)](http://slack.victoriametrics.com/)
+[![Slack](https://img.shields.io/badge/join%20slack-%23victoriametrics-brightgreen.svg)](http://slack.acceldata.io/)
 [![GitHub license](https://img.shields.io/github/license/VictoriaMetrics/operator.svg)](https://github.com/VictoriaMetrics/operator/blob/master/LICENSE)
 [![Go Report](https://goreportcard.com/badge/github.com/VictoriaMetrics/operator)](https://goreportcard.com/report/github.com/VictoriaMetrics/operator)
 [![Build Status](https://github.com/VictoriaMetrics/VictoriaMetrics/workflows/main/badge.svg)](https://github.com/VictoriaMetrics/operator/actions)
@@ -23,7 +23,7 @@ With CRD (Custom Resource Definition) you can define application configuration a
 
  Operator simplifies VictoriaMetrics cluster installation, upgrading and managing.
 
- It has integration with VictoriaMetrics [vmbackupmanager](https://docs.victoriametrics.com/vmbackupmanager.html) - advanced tools for making backups. Check [Backup automation for VMSingle](./docs/resources/vmsingle.md#backup-automation) or [Backup automation for VMCluster](./docs/resources/vmcluster.md#backup-automation).
+ It has integration with VictoriaMetrics [vmbackupmanager](https://docs.acceldata.io/vmbackupmanager.html) - advanced tools for making backups. Check [Backup automation for VMSingle](./docs/resources/vmsingle.md#backup-automation) or [Backup automation for VMCluster](./docs/resources/vmcluster.md#backup-automation).
 
 ## Use cases
 
@@ -37,23 +37,23 @@ VictoriaMetrics provides [helm charts](https://github.com/VictoriaMetrics/helm-c
 
 ## Documentation
 
-- quick start [doc](https://docs.victoriametrics.com/operator/quick-start.html)
-- high availability [doc](https://docs.victoriametrics.com/operator/high-availability.html)
-- relabeling configuration [doc](https://docs.victoriametrics.com/operator/relabeling.html)
-- managing crd objects versions [doc](https://docs.victoriametrics.com/operator/managing-versions.html)
-- design and description of implementation [design](https://docs.victoriametrics.com/operator/design.html)
-- operator objects description [doc](https://docs.victoriametrics.com/operator/api.html)
-- backups [docs](https://docs.victoriametrics.com/operator/backups.html)
-- external access to cluster resources[doc](https://docs.victoriametrics.com/operator/auth.html)
-- security [doc](https://docs.victoriametrics.com/operator/security.html)
-- resource validation [doc](https://docs.victoriametrics.com/operator/resources-validation.html)
+- quick start [doc](https://docs.acceldata.io/operator/quick-start.html)
+- high availability [doc](https://docs.acceldata.io/operator/high-availability.html)
+- relabeling configuration [doc](https://docs.acceldata.io/operator/relabeling.html)
+- managing crd objects versions [doc](https://docs.acceldata.io/operator/managing-versions.html)
+- design and description of implementation [design](https://docs.acceldata.io/operator/design.html)
+- operator objects description [doc](https://docs.acceldata.io/operator/api.html)
+- backups [docs](https://docs.acceldata.io/operator/backups.html)
+- external access to cluster resources[doc](https://docs.acceldata.io/operator/auth.html)
+- security [doc](https://docs.acceldata.io/operator/security.html)
+- resource validation [doc](https://docs.acceldata.io/operator/resources-validation.html)
 
   NOTE documentations was moved into main VictoriaMetrics repo [link](https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs/operator)
   All changes must be done there.
 
 ## Configuration
 
- Operator configured by env variables, list of it can be found at [link](https://docs.victoriametrics.com/operator/vars.html)
+ Operator configured by env variables, list of it can be found at [link](https://docs.acceldata.io/operator/vars.html)
 
  It defines default configuration options, like images for components, timeouts, features.
 
@@ -67,8 +67,8 @@ from 1.25 to 1.28
 
 - cannot apply crd at kubernetes 1.18 + version and kubectl reports error:
 ```bash
-Error from server (Invalid): error when creating "release/crds/crd.yaml": CustomResourceDefinition.apiextensions.k8s.io "vmalertmanagers.operator.victoriametrics.com" is invalid: [spec.validation.openAPIV3Schema.properties[spec].properties[initContainers].items.properties[ports].items.properties[protocol].default: Required value: this property is in x-kubernetes-list-map-keys, so it must have a default or be a required property, spec.validation.openAPIV3Schema.properties[spec].properties[containers].items.properties[ports].items.properties[protocol].default: Required value: this property is in x-kubernetes-list-map-keys, so it must have a default or be a required property]
-Error from server (Invalid): error when creating "release/crds/crd.yaml": CustomResourceDefinition.apiextensions.k8s.io "vmalerts.operator.victoriametrics.com" is invalid: [
+Error from server (Invalid): error when creating "release/crds/crd.yaml": CustomResourceDefinition.apiextensions.k8s.io "vmalertmanagers.operator.acceldata.io" is invalid: [spec.validation.openAPIV3Schema.properties[spec].properties[initContainers].items.properties[ports].items.properties[protocol].default: Required value: this property is in x-kubernetes-list-map-keys, so it must have a default or be a required property, spec.validation.openAPIV3Schema.properties[spec].properties[containers].items.properties[ports].items.properties[protocol].default: Required value: this property is in x-kubernetes-list-map-keys, so it must have a default or be a required property]
+Error from server (Invalid): error when creating "release/crds/crd.yaml": CustomResourceDefinition.apiextensions.k8s.io "vmalerts.operator.acceldata.io" is invalid: [
 ```
   upgrade to the latest release version. There is a bug with kubernetes objects at the early releases.
 
@@ -76,7 +76,7 @@ Error from server (Invalid): error when creating "release/crds/crd.yaml": Custom
 
 Feel free asking any questions regarding VictoriaMetrics:
 
-* [slack](http://slack.victoriametrics.com/)
+* [slack](http://slack.acceldata.io/)
 * [reddit](https://www.reddit.com/r/VictoriaMetrics/)
 * [telegram-en](https://t.me/VictoriaMetrics_en)
 * [telegram-ru](https://t.me/VictoriaMetrics_ru1)

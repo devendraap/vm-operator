@@ -15,7 +15,7 @@ aliases:
 The `VMStaticScrape` CRD provides mechanism for scraping metrics from static targets, configured by CRD targets.
 
 `VMStaticScrape` object generates part of [VMAgent](./vmagent.md) 
-configuration with [static "service discovery"](https://docs.victoriametrics.com/sd_configs.html#static_configs).
+configuration with [static "service discovery"](https://docs.acceldata.io/sd_configs.html#static_configs).
 It has various options for scraping configuration of target (with basic auth,tls access, by specific port name etc.).
 
 By specifying configuration at CRD, operator generates config 
@@ -35,7 +35,7 @@ Also, you can check out the [examples](#examples) section.
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMStaticScrape
 metadata:
   name: vmstaticscrape-sample

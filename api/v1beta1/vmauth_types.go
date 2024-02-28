@@ -198,7 +198,7 @@ type VMAuthSpec struct {
 	UseStrictSecurity *bool `json:"useStrictSecurity,omitempty"`
 	// License allows to configure license key to be used for enterprise features.
 	// Using license key is supported starting from VictoriaMetrics v1.94.0.
-	// See: https://docs.victoriametrics.com/enterprise.html
+	// See: https://docs.acceldata.io/enterprise.html
 	// +optional
 	License *License `json:"license,omitempty"`
 }
@@ -240,13 +240,13 @@ type VMAuthUnauthorizedPath struct {
 
 	// LoadBalancingPolicy defines load balancing policy to use for backend urls.
 	// Supported policies: least_loaded, first_available.
-	// See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+	// See https://docs.acceldata.io/vmauth.html#load-balancing for more details (default "least_loaded")
 	// +optional
 	// +kubebuilder:validation:Enum=least_loaded;first_available
 	LoadBalancingPolicy *string `json:"load_balancing_policy,omitempty"`
 
 	// DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-	// See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+	// See https://docs.acceldata.io/vmauth.html#dropping-request-path-prefix for more details.
 	// +optional
 	DropSrcPathPrefixParts *int `json:"drop_src_path_prefix_parts,omitempty"`
 }

@@ -253,7 +253,7 @@ func Test_growSTSPVC(t *testing.T) {
 						Labels: map[string]string{
 							"app": "vmselect",
 						},
-						Annotations: map[string]string{"operator.victoriametrics.com/pvc/allow-volume-expansion": "true"},
+						Annotations: map[string]string{"operator.acceldata.io/pvc/allow-volume-expansion": "true"},
 					},
 					Spec: v1.PersistentVolumeClaimSpec{
 						Resources: v1.ResourceRequirements{Requests: map[v1.ResourceName]resource.Quantity{

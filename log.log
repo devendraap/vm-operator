@@ -1,0 +1,16 @@
+docker buildx build -t devendraap/vm-operator:0.1.0-amd64 --platform=linux/amd64  --build-arg base_image=alpine:3.19.0 --load .       
+
+docker tag docker.io/devendraap/vm-operator:0.1.0-amd64 gchr.io/devendraap/vm-operator:0.1.0-amd64 
+docker image push gchr.io/devendraap/vm-operator:0.1.0-amd64 
+
+kubectl create secret docker-registry ghcr-login-secret --docker-server=https://ghcr.io --docker-username="devendraap" --docker-password="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" --docker-email="devendraparhate@gmail.com" -n vm1
+
+
+ghcr.io/devendraap/vm-operator:0.1.0-amd64
+
+
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+
+
+env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -trimpath -ldflags "-w -s  -X github.com/VictoriaMetrics/VictoriaMetrics/lib/buildinfo.Version=0.1.0" -o bin/manager-amd64 main.go
+docker buildx build -t devendraap/vm-operator:0.1.0-amd64 --platform=linux/amd64  --build-arg base_image=alpine:3.19.0 --load .       

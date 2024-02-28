@@ -1,7 +1,7 @@
 
 ---
 
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-istio
@@ -32,7 +32,7 @@ spec:
 
 ---
 
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   labels:

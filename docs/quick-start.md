@@ -139,7 +139,7 @@ helm install vmoperator vm/victoria-metrics-operator -f values.yaml -n vm
 #   kubectl --namespace vm get pods -l "app.kubernetes.io/instance=vmoperator"
 #
 # Get more information on https://github.com/VictoriaMetrics/helm-charts/tree/master/charts/victoria-metrics-operator.
-# See "Getting started guide for VM Operator" on https://docs.victoriametrics.com/guides/getting-started-with-vm-operator.html .
+# See "Getting started guide for VM Operator" on https://docs.acceldata.io/guides/getting-started-with-vm-operator.html .
 ```
 
 And check that operator is running:
@@ -161,7 +161,7 @@ Let's create fullstack monitoring cluster with
 [`vmalertmanager`](./resources/vmalertmanager.md),  
 [`vmcluster`](./resources/vmcluster.md)
 (a component for deploying a cluster version of 
-[VictoriaMetrics](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview) 
+[VictoriaMetrics](https://docs.acceldata.io/Cluster-VictoriaMetrics.html#architecture-overview) 
 consisting of `vmstorage`, `vmselect` and `vminsert`):
 
 <img src="quick-start_cluster-scheme.png" width="1200">
@@ -182,7 +182,7 @@ with the following content:
 
 ```yaml
 # vmcluster.yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMCluster
 metadata:
   name: demo
@@ -234,7 +234,7 @@ After that you can deploy `vmcluster` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmcluster.yaml -n vm
 
-# vmcluster.operator.victoriametrics.com/demo created
+# vmcluster.operator.acceldata.io/demo created
 ```
 
 Check that `vmcluster` is running:
@@ -284,7 +284,7 @@ code vmagent.yaml
 with the following content:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: demo
@@ -299,7 +299,7 @@ After that you can deploy `vmagent` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmagent.yaml -n vm
 
-# vmagent.operator.victoriametrics.com/demo created
+# vmagent.operator.acceldata.io/demo created
 ```
 
 Check that `vmagent` is running:
@@ -333,7 +333,7 @@ code vmservicescrape.yaml
 with the following content:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMServiceScrape
 metadata:
   name: vmoperator-demo
@@ -354,7 +354,7 @@ After that you can deploy `vmservicescrape` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmservicescrape.yaml -n vm
 
-# vmservicescrape.operator.victoriametrics.com/vmoperator-demo created
+# vmservicescrape.operator.acceldata.io/vmoperator-demo created
 ```
 
 ### Access
@@ -374,7 +374,7 @@ code vmauth.yaml
 with the following content:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAuth
 metadata:
   name: demo
@@ -405,7 +405,7 @@ code vmuser.yaml
 with the following content:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: demo
@@ -437,8 +437,8 @@ After that you can deploy `vmauth` and `vmuser` resources to the kubernetes clus
 kubectl apply -f vmauth.yaml -n vm
 kubectl apply -f vmuser.yaml -n vm
 
-# vmauth.operator.victoriametrics.com/demo created
-# vmuser.operator.victoriametrics.com/demo created
+# vmauth.operator.acceldata.io/demo created
+# vmuser.operator.acceldata.io/demo created
 ```
 
 Operator automatically creates a secret with username/password token for `VMUser` resource with `generatePassword=true`:
@@ -482,7 +482,7 @@ code vmalertmanager.yaml
 with the following content:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: demo
@@ -511,7 +511,7 @@ After that you can deploy `vmalertmanager` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmalertmanager.yaml -n vm
 
-# vmalertmanager.operator.victoriametrics.com/demo created
+# vmalertmanager.operator.acceldata.io/demo created
 ```
 
 Check that `vmalertmanager` is running:
@@ -536,7 +536,7 @@ code vmalert.yaml
 with the following content:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlert
 metadata:
   name: demo
@@ -561,7 +561,7 @@ After that you can deploy `vmalert` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmalert.yaml -n vm
 
-# vmalert.operator.victoriametrics.com/demo created
+# vmalert.operator.acceldata.io/demo created
 ```
 
 Check that `vmalert` is running:
@@ -588,7 +588,7 @@ with the following content:
 
 {% raw %}
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMRule
 metadata:
   name: demo
@@ -613,7 +613,7 @@ After that you can deploy `vmrule` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmrule.yaml -n vm
 
-# vmrule.operator.victoriametrics.com/demo created
+# vmrule.operator.acceldata.io/demo created
 ```
 
 #### VMUser update
@@ -625,7 +625,7 @@ code vmuser.yaml
 ```
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMUser
 metadata:
   name: demo
@@ -667,7 +667,7 @@ After that you can deploy `vmuser` resource to the kubernetes cluster:
 ```shell
 kubectl apply -f vmuser.yaml -n vm
 
-# vmuser.operator.victoriametrics.com/demo created
+# vmuser.operator.acceldata.io/demo created
 ```
 
 And now you can get access to your data with url `http://vm-demo.k8s.orb.local/vmalert` 

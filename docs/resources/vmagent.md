@@ -13,7 +13,7 @@ aliases:
 # VMAgent
 
 `VMAgent` represents agent, which helps you collect metrics from various sources and stores them in VictoriaMetrics.
-The `VMAgent` CRD declaratively defines a desired [VMAgent](https://docs.victoriametrics.com/vmagent)
+The `VMAgent` CRD declaratively defines a desired [VMAgent](https://docs.acceldata.io/vmagent)
 setup to run in a Kubernetes cluster.
 
 It requires access to Kubernetes API and you can create RBAC for it first, it can be found 
@@ -96,7 +96,7 @@ Here are some examples of `VMAgent` configuration with selectors:
 
 ```yaml
 # select all scrape objects in the cluster
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-select-all
@@ -107,7 +107,7 @@ spec:
 ---
 
 # select all scrape objects in specific namespace (my-namespace)
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-select-ns
@@ -137,13 +137,13 @@ spec:
 ### Replication and deduplication
 
 To run VMAgent in a highly available manner at first you have to configure deduplication in Victoria Metrics
-according [this doc for VMSingle](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#deduplication)
-or [this doc for VMCluster](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#deduplication).
+according [this doc for VMSingle](https://docs.acceldata.io/Single-server-VictoriaMetrics.html#deduplication)
+or [this doc for VMCluster](https://docs.acceldata.io/Cluster-VictoriaMetrics.html#deduplication).
 
 You can do it with `extraArgs` on [`VMSingle`](./vmsingle.md):
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: vmsingle-example
@@ -157,7 +157,7 @@ spec:
 For [`VMCluster`](./vmcluster.md) you can do it with `vmstorage.extraArgs` and `vmselect.extraArgs`:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMCluster
 metadata:
   name: vmcluster-example
@@ -180,7 +180,7 @@ After enabling deduplication you can increase replicas for VMAgent.
 For instance, let's create `VMAgent` with 2 replicas:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-ha-example
@@ -200,7 +200,7 @@ Now, even if something happens to one of the vmagent, you'll still have the data
 
 ### StatefulMode
 
-VMAgent supports [persistent buffering](https://docs.victoriametrics.com/vmagent.html#replication-and-high-availability)
+VMAgent supports [persistent buffering](https://docs.acceldata.io/vmagent.html#replication-and-high-availability)
 for sending data to remote storage. By default, operator set `-remoteWrite.tmpDataPath` for `VMAgent` to `/tmp` (that use k8s ephemeral storage)
 and `VMAgent` loses state of the PersistentQueue on pod restarts.
 
@@ -210,7 +210,7 @@ Operator creates `StatefulSet` and, with provided `PersistentVolumeClaimTemplate
 Example of configuration for `StatefulMode`:
 
 ```yaml 
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-ha-example
@@ -236,7 +236,7 @@ spec:
 
 ### Sharding
 
-Operator supports sharding with [cluster mode of vmagent](https://docs.victoriametrics.com/vmagent.html#scraping-big-number-of-targets)
+Operator supports sharding with [cluster mode of vmagent](https://docs.acceldata.io/vmagent.html#scraping-big-number-of-targets)
 for **scraping big number of targets**.
 
 Sharding for `VMAgent` distributes scraping between multiple deployments of `VMAgent`.
@@ -244,7 +244,7 @@ Sharding for `VMAgent` distributes scraping between multiple deployments of `VMA
 Example usage (it is a complete example of `VMAgent` with high availability features):
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-ha-example
@@ -304,7 +304,7 @@ There are two options for adding targets into `VMAgent`:
 - [defining it as a Kubernetes Secret](#define-additional-scrape-configuration-as-a-kubernetes-secret).
 
 No validation happens during the creation of configuration. However, you must validate job specs, and it must follow job spec configuration.
-Please check [scrape_configs documentation](https://docs.victoriametrics.com/sd_configs.html#scrape_configs) as references.
+Please check [scrape_configs documentation](https://docs.acceldata.io/sd_configs.html#scrape_configs) as references.
 
 ### Inline Additional Scrape Configuration in VMAgent CRD
 
@@ -312,7 +312,7 @@ You need to add scrape configuration directly to the `vmagent spec.inlineScrapeC
 See example below
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-example
@@ -351,7 +351,7 @@ stringData:
 After that, you need to specify the secret's name and key in VMAgent CRD in `additionalScrapeConfigs` section:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-example
@@ -376,7 +376,7 @@ Note in some cases, you don't need relabeling, `key=value` label pairs can be ad
 
 ```yaml
 # simple label add config
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-example
@@ -422,7 +422,7 @@ For relabeling per remoteWrite target, add   `urlRelabelConfig` name of `Configm
 and key `target-1-relabel.yaml` to one of remoteWrite target for relabeling only for those target:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-example
@@ -443,7 +443,7 @@ spec:
 ### Inline relabeling config
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-example
@@ -502,7 +502,7 @@ data:
 ```
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: example-vmagent
@@ -557,7 +557,7 @@ data:
 kind: ConfigMap
 metadata:
   finalizers:
-  - apps.victoriametrics.com/finalizer
+  - apps.acceldata.io/finalizer
   labels:
     app.kubernetes.io/component: monitoring
     app.kubernetes.io/instance: example-vmagent
@@ -566,7 +566,7 @@ metadata:
   name: relabelings-assets-vmagent-example-vmagent
   namespace: default
   ownerReferences:
-  - apiVersion: operator.victoriametrics.com/v1beta1
+  - apiVersion: operator.acceldata.io/v1beta1
     blockOwnerDeletion: true
     controller: true
     kind: VMAgent
@@ -576,14 +576,14 @@ metadata:
 
 ### Additional information
 
-`VMAgent` also has some extra options for relabeling actions, you can check it [docs](https://docs.victoriametrics.com/vmagent#relabeling).
+`VMAgent` also has some extra options for relabeling actions, you can check it [docs](https://docs.acceldata.io/vmagent#relabeling).
 
 ## Version management
 
 To set `VMAgent` version add `spec.image.tag` name from [releases](https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: example-vmagent
@@ -598,7 +598,7 @@ spec:
 Also, you can specify `imagePullSecrets` if you are pulling images from private repo:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: example-vmagent
@@ -614,25 +614,25 @@ spec:
 
 ## Enterprise features
 
-VMAgent supports feature [Kafka integration](https://docs.victoriametrics.com/vmagent.html#kafka-integration)
-from [VictoriaMetrics Enterprise](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+VMAgent supports feature [Kafka integration](https://docs.acceldata.io/vmagent.html#kafka-integration)
+from [VictoriaMetrics Enterprise](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 
-For using Enterprise version of [vmagent](https://docs.victoriametrics.com/vmagent.html)
+For using Enterprise version of [vmagent](https://docs.acceldata.io/vmagent.html)
 you need to change version of `vmagent` to version with `-enterprise` suffix using [Version management](#version-management).
 
 All the enterprise apps require `-eula` command-line flag to be passed to them.
-This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 So you can use [extraArgs](./README.md#extra-arguments) for passing this flag to `VMAgent`:
 
-After that you can pass [Kafka integration](https://docs.victoriametrics.com/vmagent.html#kafka-integration) 
+After that you can pass [Kafka integration](https://docs.acceldata.io/vmagent.html#kafka-integration) 
 flags to `VMAgent` with [extraArgs](./README.md#extra-arguments).
 
 ### Reading metrics from Kafka
 
-Here are complete example for [Reading metrics from Kafka](https://docs.victoriametrics.com/vmagent.html#reading-metrics-from-kafka):
+Here are complete example for [Reading metrics from Kafka](https://docs.acceldata.io/vmagent.html#reading-metrics-from-kafka):
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-ent-example
@@ -644,12 +644,12 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmagent enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
     
     # using enterprise features: reading metrics from kafka
-    # more details about kafka integration you can read on https://docs.victoriametrics.com/vmagent.html#kafka-integration
-    # more details about these and other flags you can read on https://docs.victoriametrics.com/vmagent.html#command-line-flags-for-kafka-consumer
+    # more details about kafka integration you can read on https://docs.acceldata.io/vmagent.html#kafka-integration
+    # more details about these and other flags you can read on https://docs.acceldata.io/vmagent.html#command-line-flags-for-kafka-consumer
     kafka.consumer.topic.brokers: localhost:9092
     kafka.consumer.topic.format: influx
     kafka.consumer.topic: metrics-by-telegraf
@@ -660,10 +660,10 @@ spec:
 
 ### Writing metrics to Kafka
 
-Here are complete example for [Writing metrics to Kafka](https://docs.victoriametrics.com/vmagent.html#writing-metrics-to-kafka):
+Here are complete example for [Writing metrics to Kafka](https://docs.acceldata.io/vmagent.html#writing-metrics-to-kafka):
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-ent-example
@@ -675,11 +675,11 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmagent enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
   
   # using enterprise features: writing metrics to Kafka
-  # more details about kafka integration you can read on https://docs.victoriametrics.com/vmagent.html#kafka-integration
+  # more details about kafka integration you can read on https://docs.acceldata.io/vmagent.html#kafka-integration
   remoteWrite:
     # sasl with username and password
     - url: kafka://broker-1:9092/?topic=prom-rw-1&security.protocol=SASL_SSL&sasl.mechanisms=PLAIN 
@@ -713,7 +713,7 @@ spec:
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent-example

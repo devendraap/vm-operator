@@ -13,7 +13,7 @@ aliases:
 # VMSingle
 
 `VMSingle` represents database for storing metrics.
-The `VMSingle` CRD declaratively defines a [single-node VM](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html)
+The `VMSingle` CRD declaratively defines a [single-node VM](https://docs.acceldata.io/Single-server-VictoriaMetrics.html)
 installation to run in a Kubernetes cluster.
 
 For each `VMSingle` resource, the Operator deploys a properly configured `Deployment` in the same namespace.
@@ -42,7 +42,7 @@ use [`VMCluster`](./vmcluster.md) instead or duplicate the setup.
 To set `VMSingle` version add `spec.image.tag` name from [releases](https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: example-vmsingle
@@ -57,7 +57,7 @@ spec:
 Also, you can specify `imagePullSecrets` if you are pulling images from private repo:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: example-vmsingle
@@ -73,28 +73,28 @@ spec:
 
 ## Enterprise features
 
-VMSingle supports features from [VictoriaMetrics Enterprise](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise):
+VMSingle supports features from [VictoriaMetrics Enterprise](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise):
 
-- [Downsampling](https://docs.victoriametrics.com/#downsampling) 
-- [Multiple retentions / Retention filters](https://docs.victoriametrics.com/#retention-filters)
-- [Backup automation](https://docs.victoriametrics.com/vmbackupmanager.html)
+- [Downsampling](https://docs.acceldata.io/#downsampling) 
+- [Multiple retentions / Retention filters](https://docs.acceldata.io/#retention-filters)
+- [Backup automation](https://docs.acceldata.io/vmbackupmanager.html)
 
-For using Enterprise version of [vmsingle](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html)
+For using Enterprise version of [vmsingle](https://docs.acceldata.io/Single-server-VictoriaMetrics.html)
 you need to change version of `VMSingle` to version with `-enterprise` suffix using [Version management](#version-management).
 
 All the enterprise apps require `-eula` command-line flag to be passed to them.
-This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.victoriametrics.com/enterprise.html#victoriametrics-enterprise).
+This flag acknowledges that your usage fits one of the cases listed on [this page](https://docs.acceldata.io/enterprise.html#victoriametrics-enterprise).
 So you can use [extraArgs](./README.md#extra-arguments) for passing this flag to `VMSingle`.
 
 ### Downsampling
 
-After that you can pass [Downsampling](https://docs.victoriametrics.com/#downsampling)
+After that you can pass [Downsampling](https://docs.acceldata.io/#downsampling)
 flag to `VMSingle` with [extraArgs](./README.md#extra-arguments) too.
 
-Here are complete example for [Downsampling](https://docs.victoriametrics.com/#downsampling):
+Here are complete example for [Downsampling](https://docs.acceldata.io/#downsampling):
  
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: vmsingle-ent-example
@@ -106,11 +106,11 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmsingle enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
     
     # using enterprise features: Downsampling
-    # more details about downsampling you can read on https://docs.victoriametrics.com/#downsampling
+    # more details about downsampling you can read on https://docs.acceldata.io/#downsampling
     downsampling.period: 30d:5m,180d:1h,1y:6h,2y:1d
 
   # ...other fields...
@@ -118,10 +118,10 @@ spec:
 
 ### Retention filters
 
-The same method is used to enable retention filters - here are complete example for [Retention filters](https://docs.victoriametrics.com/#retention-filters).
+The same method is used to enable retention filters - here are complete example for [Retention filters](https://docs.acceldata.io/#retention-filters).
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: vmsingle-ent-example
@@ -133,11 +133,11 @@ spec:
   extraArgs:
     # should be true and means that you have the legal right to run a vmsingle enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     eula: true
     
     # using enterprise features: Retention filters
-    # more details about retention filters you can read on https://docs.victoriametrics.com/#retention-filters
+    # more details about retention filters you can read on https://docs.acceldata.io/#retention-filters
     retentionFilter: '{team="juniors"}:3d,{env=~"dev|staging"}:30d'
 
   # ...other fields...
@@ -145,7 +145,7 @@ spec:
 
 ### Backup automation
 
-You can check [vmbackupmanager documentation](https://docs.victoriametrics.com/vmbackupmanager.html) for backup automation.
+You can check [vmbackupmanager documentation](https://docs.acceldata.io/vmbackupmanager.html) for backup automation.
 It contains a description of the service and its features. This section covers vmbackumanager integration in vmoperator.
 
 `VMSingle` has built-in backup configuration, it uses `vmbackupmanager` - proprietary tool for backups.
@@ -154,7 +154,7 @@ It supports incremental backups (hourly, daily, weekly, monthly) with popular ob
 Here is a complete example for backup configuration:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMSingle
 metadata:
   name: example-vmsingle
@@ -163,11 +163,11 @@ spec:
   vmBackup:
     # should be true and means that you have the legal right to run a vmsingle enterprise
     # that can either be a signed contract or an email with confirmation to run the service in a trial period
-    # https://victoriametrics.com/legal/esa/
+    # https://acceldata.io/legal/esa/
     acceptEULA: true
 
     # using enterprise features: Backup automation
-    # more details about backup automation you can read on https://docs.victoriametrics.com/vmbackupmanager.html      
+    # more details about backup automation you can read on https://docs.acceldata.io/vmbackupmanager.html      
     destination: "s3://your_bucket/folder"
     credentialsSecret:
       name: remote-storage-keys
@@ -189,13 +189,13 @@ stringData:
     aws_secret_access_key = your_secret_access_key
 ``` 
 
-You can read more about backup configuration options and mechanics [here](https://docs.victoriametrics.com/vmbackupmanager.html)
+You can read more about backup configuration options and mechanics [here](https://docs.acceldata.io/vmbackupmanager.html)
 
 Possible configuration options for backup crd can be found at [link](../api.md#vmbackup)
 
 #### Restoring backups
 
-There are several ways to restore with [vmrestore](https://docs.victoriametrics.com/vmrestore.html) or [vmbackupmanager](https://docs.victoriametrics.com/vmbackupmanager.html).
+There are several ways to restore with [vmrestore](https://docs.acceldata.io/vmrestore.html) or [vmbackupmanager](https://docs.acceldata.io/vmbackupmanager.html).
 
 ##### Manually mounting disk
 
@@ -215,7 +215,7 @@ Steps:
 
 1. Add init container with `vmrestore` command to `VMSingle` CRD, example:
     ```yaml
-    apiVersion: operator.victoriametrics.com/v1beta1
+    apiVersion: operator.acceldata.io/v1beta1
     kind: VMSingle
     metadata:
       name: example-vmsingle
@@ -224,11 +224,11 @@ Steps:
       vmBackup:
         # should be true and means that you have the legal right to run a vmsingle enterprise
         # that can either be a signed contract or an email with confirmation to run the service in a trial period
-        # https://victoriametrics.com/legal/esa/
+        # https://acceldata.io/legal/esa/
         acceptEULA: true
     
         # using enterprise features: Backup automation
-        # more details about backup automation you can read on https://docs.victoriametrics.com/vmbackupmanager.html      
+        # more details about backup automation you can read on https://docs.acceldata.io/vmbackupmanager.html      
         destination: "s3://your_bucket/folder"
         credentialsSecret:
           name: remote-storage-keys
@@ -260,7 +260,7 @@ Note that using `VMRestore` will require adjusting `src` for each pod because re
 
 ##### Using VMBackupmanager init container
 
-Using VMBackupmanager restore in Kubernetes environment is described [here](https://docs.victoriametrics.com/vmbackupmanager.html#how-to-restore-in-kubernetes).
+Using VMBackupmanager restore in Kubernetes environment is described [here](https://docs.acceldata.io/vmbackupmanager.html#how-to-restore-in-kubernetes).
 
 Advantages of using `VMBackupmanager` include:
 

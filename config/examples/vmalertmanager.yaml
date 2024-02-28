@@ -22,7 +22,7 @@ stringData:
           - url: 'http://alertmanagerwh:30500/'
 
 ---
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMAlertmanager
 metadata:
   name: example-alertmanager

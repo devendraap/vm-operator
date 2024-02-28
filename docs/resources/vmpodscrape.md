@@ -18,7 +18,7 @@ for how metrics should be exposed. Following these conventions new services will
 need to reconfigure.
 
 `VMPodScrape` object generates part of [VMAgent](./vmagent.md) configuration with
-[kubernetes service discovery](https://docs.victoriametrics.com/sd_configs.html#kubernetes_sd_configs) role `pod` having specific labels and ports.
+[kubernetes service discovery](https://docs.acceldata.io/sd_configs.html#kubernetes_sd_configs) role `pod` having specific labels and ports.
 It has various options for scraping configuration of target (with basic auth,tls access, by specific port name etc.).
 
 A `Pod` is a collection of one or more containers which can expose Prometheus metrics on a number of ports.
@@ -34,7 +34,7 @@ namespaces from which `Pods` are discovered from. To discover targets in all nam
 be empty:
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMPodScrape
 metadata:
   name: example-pod-scrape
@@ -62,7 +62,7 @@ More details about migration from prometheus-operator you can read in [this doc]
 ## Examples
 
 ```yaml
-apiVersion: operator.victoriametrics.com/v1beta1
+apiVersion: operator.acceldata.io/v1beta1
 kind: VMPodScrape
 metadata:
   name: example-pod-scrape

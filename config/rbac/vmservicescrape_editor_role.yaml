@@ -5,7 +5,7 @@ metadata:
   name: vmservicescrape-editor-role
 rules:
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmservicescrapes
   verbs:
@@ -18,7 +18,7 @@ rules:
   - watch
   - deletecollection
 - apiGroups:
-  - operator.victoriametrics.com
+  - operator.acceldata.io
   resources:
   - vmservicescrapes/status
   verbs:

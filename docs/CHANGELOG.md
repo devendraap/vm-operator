@@ -22,16 +22,16 @@ aliases:
 ## [v0.41.0](https://github.com/VictoriaMetrics/operator/releases/tag/v0.41.0) - 31 Jan 2024
 
 - update VictoriaMetrics image tags to [v1.97.0](https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.97.0).
-- [vmauth](./api.html#vmauth): add new fields for `unauthorized_user` like `src_hosts`, `headers`, `retry_status_codes` and `load_balancing_policy`. See [vmauth docs](https://docs.victoriametrics.com/vmauth.htm) for more details.
+- [vmauth](./api.html#vmauth): add new fields for `unauthorized_user` like `src_hosts`, `headers`, `retry_status_codes` and `load_balancing_policy`. See [vmauth docs](https://docs.acceldata.io/vmauth.htm) for more details.
  
 <a name="v0.40.0"></a>
 ## [v0.40.0](https://github.com/VictoriaMetrics/operator/releases/tag/v0.40.0) - 23 Jan 2024
 
-- [vmalertmanager](./api.html#vmalertmanagerconfig): fix `VMAlertmanagerConfig` discovery according to [the docs](https://docs.victoriametrics.com/operator/resources/vmalertmanager.html#using-vmalertmanagerconfig).
+- [vmalertmanager](./api.html#vmalertmanagerconfig): fix `VMAlertmanagerConfig` discovery according to [the docs](https://docs.acceldata.io/operator/resources/vmalertmanager.html#using-vmalertmanagerconfig).
 - [vmoperator](./README.md): add alerting rules for operator itself. See [this issue](https://github.com/VictoriaMetrics/operator/issues/526) for details.
 - [vmoperator](./README.md): add `revisionHistoryLimitCount` field for victoriametrics workload CRDs. See [this issue](https://github.com/VictoriaMetrics/operator/pull/834) for details. Thanks [@gidesh](https://github.com/gidesh)
-- [vmuser](./api.md#vmuser): add new fields to VMUser: `drop_src_path_prefix_parts`, `tls_insecure_skip_verify`, `metric_labels` and `load_balancing_policy`. See [specifications](https://docs.victoriametrics.com/operator/api.html#vmuserspec) and [vmauth docs](https://docs.victoriametrics.com/vmauth.htm) for more details. **Field `metric_labels` will work only with VMAuth version >= v1.97.0!**
-- [vmoperator](./README.md): add CRD support for `discord_configs`, `msteams_configs`, `sns_configs` and `webex_configs` receiver types in [VMAlertmanagerConfig](https://docs.victoriametrics.com/operator/resources/vmalertmanagerconfig.html). See [this issue](https://github.com/VictoriaMetrics/operator/issues/808)
+- [vmuser](./api.md#vmuser): add new fields to VMUser: `drop_src_path_prefix_parts`, `tls_insecure_skip_verify`, `metric_labels` and `load_balancing_policy`. See [specifications](https://docs.acceldata.io/operator/api.html#vmuserspec) and [vmauth docs](https://docs.acceldata.io/vmauth.htm) for more details. **Field `metric_labels` will work only with VMAuth version >= v1.97.0!**
+- [vmoperator](./README.md): add CRD support for `discord_configs`, `msteams_configs`, `sns_configs` and `webex_configs` receiver types in [VMAlertmanagerConfig](https://docs.acceldata.io/operator/resources/vmalertmanagerconfig.html). See [this issue](https://github.com/VictoriaMetrics/operator/issues/808)
 - [vmoperator](./README.md): add MinReadySeconds param for all CRDs. See [this issue](https://github.com/VictoriaMetrics/helm-charts/issues/608) and [this PR](https://github.com/VictoriaMetrics/operator/pull/846).
 
 <a name="v0.39.4"></a>
@@ -68,9 +68,9 @@ aliases:
 ### Features
 
 - [vmoperator](./README.md): upgrade vmagent/vmauth's default config-reloader image.
-- [vmuser](./api.md#vmuser): adds `retry_status_codes` , `max_concurrent_requests` and `response_headers` settings. It's supported since `v1.94.0` release of [vmauth](https://docs.victoriametrics.com/vmauth.html)
+- [vmuser](./api.md#vmuser): adds `retry_status_codes` , `max_concurrent_requests` and `response_headers` settings. It's supported since `v1.94.0` release of [vmauth](https://docs.acceldata.io/vmauth.html)
 - [vmoperator](./README.md): adds `useStrictSecurity` for all components. It allows to migrate from insecure to strictly secured deployments per component without breaking changes. See [this issue](https://github.com/VictoriaMetrics/operator/issues/762#issuecomment-1735061532) for details.
-- [vmoperator](./README.md): add ability to provide license key for VictoriaMetrics enterprise components. See [this doc](https://docs.victoriametrics.com/enterprise.html) for the details.
+- [vmoperator](./README.md): add ability to provide license key for VictoriaMetrics enterprise components. See [this doc](https://docs.acceldata.io/enterprise.html) for the details.
 
 ### Fixes
 
@@ -114,7 +114,7 @@ aliases:
 
 ### Features
 
-- [vmagent](./api.md#vmagent): support [multiple if conditions](https://docs.victoriametrics.com/vmagent.html#relabeling:~:text=the%20if%20option%20may%20contain%20more%20than%20one%20filter) for relabeling. See [this issue](https://github.com/VictoriaMetrics/operator/issues/730) for details. 
+- [vmagent](./api.md#vmagent): support [multiple if conditions](https://docs.acceldata.io/vmagent.html#relabeling:~:text=the%20if%20option%20may%20contain%20more%20than%20one%20filter) for relabeling. See [this issue](https://github.com/VictoriaMetrics/operator/issues/730) for details. 
 
 <a name="v0.36.1"></a>
 ## [v0.36.1](https://github.com/VictoriaMetrics/operator/releases/tag/v0.36.0) - 25 Aug 2023
@@ -163,8 +163,8 @@ aliases:
   - support list for `match` parameter, see [this issue](https://github.com/VictoriaMetrics/VictoriaMetrics/issues/4635) for details;
   - support `staleness_interval`, see [this issue](https://github.com/VictoriaMetrics/VictoriaMetrics/issues/4667) for details.
 - [vmcluster](./api.md#vmagent): add [example config](https://github.com/VictoriaMetrics/operator/blob/master/config/examples/vmcluster_with_additional_claim.yaml) for cluster with custom storage claims.
-- [vmrule](./api.md#vmrule): support `update_entries_limit` field in rules, refer to [alerting rules](https://docs.victoriametrics.com/vmalert.html#alerting-rules). See [this PR](https://github.com/VictoriaMetrics/operator/pull/691) for details.
-- [vmrule](./api.md#vmrule): support `keep_firing_for` field in rules, refer to [alerting rules](https://docs.victoriametrics.com/vmalert.html#alerting-rules). See [this PR](https://github.com/VictoriaMetrics/operator/pull/711) for details.
+- [vmrule](./api.md#vmrule): support `update_entries_limit` field in rules, refer to [alerting rules](https://docs.acceldata.io/vmalert.html#alerting-rules). See [this PR](https://github.com/VictoriaMetrics/operator/pull/691) for details.
+- [vmrule](./api.md#vmrule): support `keep_firing_for` field in rules, refer to [alerting rules](https://docs.acceldata.io/vmalert.html#alerting-rules). See [this PR](https://github.com/VictoriaMetrics/operator/pull/711) for details.
 - [vmoperator parameters](./vars.md): Add option `VM_ENABLESTRICTSECURITY` and enable strict security context by default. See [this issue](https://github.com/VictoriaMetrics/operator/issues/637), [this](https://github.com/VictoriaMetrics/operator/pull/692/) and [this](https://github.com/VictoriaMetrics/operator/pull/712) PR for details.
 - [vmoperator parameters](./vars.md): change option `VM_PSPAUTOCREATEENABLED` default value from `true` to `false` cause PodSecurityPolicy already got deprecated since [kubernetes v1.25](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#psp-v125). See [this pr](https://github.com/VictoriaMetrics/operator/pull/726) for details.
 
@@ -286,8 +286,8 @@ aliases:
 
 - [vmauth](./api.md#vmauth): automatically configures `proxy-protocol` client and `reloadAuthKey` for `config-reloader` container. https://github.com/VictoriaMetrics/operator/commit/611819233bf595a4dbd04b07d7be24b7e994379c
 - [vmagent](./api.md#vmagent): adds `scrapeTimeout` global configuration for `VMAgent` https://github.com/VictoriaMetrics/operator/commit/d1d5024c6befa0961f8d56c82a0554935a4b1878
-- [vmagent](./api.md#vmagent): adds [streaming aggregation](https://docs.victoriametrics.com/stream-aggregation.html) for `remoteWrite` targets https://github.com/VictoriaMetrics/operator/commit/b8baa6c2b72bdda64ebfcc9c3d86d846cd9b3c98 Thanks [@Amper](https://github.com/Amper)
-- [vmsingle](./api.md#vmsingle): adds [streaming aggregation](https://docs.victoriametrics.com/stream-aggregation.html) as global configuration for database https://github.com/VictoriaMetrics/operator/commit/b8baa6c2b72bdda64ebfcc9c3d86d846cd9b3c98 Thanks [@Amper](https://github.com/Amper)
+- [vmagent](./api.md#vmagent): adds [streaming aggregation](https://docs.acceldata.io/stream-aggregation.html) for `remoteWrite` targets https://github.com/VictoriaMetrics/operator/commit/b8baa6c2b72bdda64ebfcc9c3d86d846cd9b3c98 Thanks [@Amper](https://github.com/Amper)
+- [vmsingle](./api.md#vmsingle): adds [streaming aggregation](https://docs.acceldata.io/stream-aggregation.html) as global configuration for database https://github.com/VictoriaMetrics/operator/commit/b8baa6c2b72bdda64ebfcc9c3d86d846cd9b3c98 Thanks [@Amper](https://github.com/Amper)
 
 [Changes][v0.32.0]
 
@@ -931,7 +931,7 @@ aliases:
 - Major API update for `VMServiceScrape`, `VMPodScrape`, `VMProbe`, `VMStaticScrape` and `VMNodeScrape`:
 - adds missing config params (sampleLimit and etc)
 - Adds new config options `vm_scrape_params` https://github.com/VictoriaMetrics/operator/issues/303
-- Adds proxyAuth, that allows to authenticate proxy requests https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+- Adds proxyAuth, that allows to authenticate proxy requests https://docs.acceldata.io/vmagent.html#scraping-targets-via-a-proxy
 - Adds OAuth2 support.
 - Adds `apiextensions.k8s.io/v1` `CRD` generation, `v1beta1` is now legacy https://github.com/VictoriaMetrics/operator/issues/291
 - Adds new `CRD` `VMAlertmanagerConfig`, it supports only v0.22 `alertmanager` version or above https://github.com/VictoriaMetrics/operator/issues/188
@@ -1459,7 +1459,7 @@ Starting point of operator releases
 <a name="v0.0.6"></a>
 ## [v0.0.6](https://github.com/VictoriaMetrics/operator/releases/tag/v0.0.6) - 26 Jul 2020
 
-- breaking changes to api (changed group name to operator.victoriametrics.com)
+- breaking changes to api (changed group name to operator.acceldata.io)
 - changed build and release process
 - migrated to operator sdk 0.19
 

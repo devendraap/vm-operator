@@ -53,9 +53,9 @@ func (r *VMAlertReconciler) Scheme() *runtime.Scheme {
 }
 
 // Reconcile general reconile method for controller
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmalerts,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmalerts/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=operator.victoriametrics.com,resources=vmalerts/finalizers,verbs=*
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmalerts,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmalerts/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=operator.acceldata.io,resources=vmalerts/finalizers,verbs=*
 func (r *VMAlertReconciler) Reconcile(ctx context.Context, req ctrl.Request) (result ctrl.Result, err error) {
 	reqLogger := r.Log.WithValues("vmalert", req.NamespacedName)
 
